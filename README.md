@@ -38,10 +38,18 @@ end
 
 refer to [Shipwire gem](https://github.com/billr578/shipwire)
 
+## Sync shipwire
+
+Sync all orders and all variants to shipwire
+
+```
+be rake solidus_shipwire:sync_variants
+```
+
 Example
 =============
 
-Example goes here.
+The orders are put in shipwire when they become in a complete state
 
 Testing
 -------
