@@ -20,9 +20,8 @@ bundle install
 After that's done, you can install and run the necessary migrations, then seed the database:
 
 ```
-bundle exec rake solidus_auth:install:migrations
+bundle exec rake solidus_shipwire:install:migrations
 bundle exec rake db:migrate
-bundle exec rake db:seed
 ```
 
 ## Configuration
@@ -30,6 +29,7 @@ bundle exec rake db:seed
 Basic configuration
 
 ```
+# config/initializers/shipwire.rb
 Shipwire.configure do |config|
   config.username = "<%= ENV['SHIPWIRE_USERNAME'] %>"
   config.password = "<%= ENV['SHIPWIRE_PASSWORD'] %>"
@@ -39,7 +39,7 @@ end
 refer to [Shipwire gem](https://github.com/billr578/shipwire)
 
 Example
-=======
+=============
 
 Example goes here.
 
