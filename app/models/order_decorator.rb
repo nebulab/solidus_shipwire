@@ -1,6 +1,10 @@
 module SolidusShipwire::Order
   prepend SolidusShipwire::Proxy
 
+  def self.prepended(base)
+    base.state_machine.after_transition to: :complete, do: :in_shipwire
+  end
+
   def to_shipwire
     {
       orderId: id,
