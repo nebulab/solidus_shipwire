@@ -15,7 +15,7 @@ module SolidusShipwire::Order
         server: 'Production'
       },
       items: line_items.map(&:to_shipwire),
-      shipTo: ship_address.to_shipwire.merge(email: user.email)
+      shipTo: ship_address.to_shipwire.merge(email: email)
     }
   end
 

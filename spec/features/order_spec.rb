@@ -3,7 +3,7 @@ require 'spree/testing_support/order_walkthrough'
 describe Spree::Order do
   let!(:order) { create(:order_with_line_items, state: :confirm) }
 
-  context "order in confirm state" do
+  context 'order in confirm state' do
     let!(:order) { OrderWalkthrough.up_to(:payment) }
 
     it 'run sync when completed' do
