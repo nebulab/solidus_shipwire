@@ -8,6 +8,7 @@ module SolidusShipwire::Order
   def to_shipwire
     {
       orderId: id,
+      orderNo: number,
       options: {
         currency: 'USD',
         canSplit: 1,
