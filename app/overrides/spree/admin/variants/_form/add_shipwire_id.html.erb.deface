@@ -1,0 +1,14 @@
+<!-- insert_after '[data-hook=admin_variant_form_fields]' -->
+
+<div data-hook="admin_variant_form_shipwire_fields">
+  <fieldset class="no-border-top no-border-bottom">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="field" data-hook="shipwire-id">
+          <%= f.label :shipwire_id %>
+          <%= f.text_field :shipwire_id, value: @variant.shipwire_id, class: 'fullwidth' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
