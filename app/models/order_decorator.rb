@@ -2,7 +2,7 @@ module SolidusShipwire::Order
   prepend SolidusShipwire::Proxy
 
   def self.prepended(base)
-    base.state_machine.after_transition to: :complete, do: :in_shipwire
+    base.state_machine.after_transition to: :complete, do: :in_shipwire, if: :line_items_in_shipwire?
   end
 
   def to_shipwire
@@ -15,9 +15,17 @@ module SolidusShipwire::Order
         hold: 1,
         server: 'Production'
       },
-      items: line_items.map(&:to_shipwire),
+      items: line_items_in_shipwire,
       shipTo: ship_address.to_shipwire.merge(email: email)
     }
+  end
+
+  def line_items_in_shipwire?
+    line_items_in_shipwire.any?
+  end
+
+  def line_items_in_shipwire
+    line_items.on_shipwire.map(&:to_shipwire)
   end
 
   def create_on_shipwire(obj)
