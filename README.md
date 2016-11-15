@@ -1,7 +1,8 @@
-SolidusShipwire
-=============
+# SolidusShipwire 
 
-Introduction goes here.
+[![Build Status](https://travis-ci.org/nebulab/solidus_shipwire.svg?branch=master)](https://travis-ci.org/nebulab/solidus_shipwire.svg?branch=master)
+
+solidus and shipwire connect manager.
 
 ## Installation
 
