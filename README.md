@@ -40,10 +40,17 @@ refer to [Shipwire gem](https://github.com/billr578/shipwire)
 
 ## Sync shipwire
 
-Sync all orders and all variants to shipwire
+Sync all variants to shipwire
 
 ```
 be rake solidus_shipwire:sync_variants
+```
+
+If you already have your variants in shipwire, you can create variants with same 
+sku on solidus and run:
+
+```
+be rake solidus_shipwire:link_shipwire_product
 ```
 
 Example
@@ -60,4 +67,4 @@ Be sure to bundle your dependencies and then create a dummy test app for the spe
     $ bundle exec rake test_app
     $ bundle exec rspec spec
 
-Copyright (c) 2016 [name of extension creator], released under the New BSD License
+Copyright (c) 2016 [Daniele Palombo], released under the New BSD License
