@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email     = 'danielepalombo@nebulab.it'
   s.homepage  = 'http://github.com/nebulab/solidus_shipwire'
 
-  s.files       = `git ls-files`.split('\n')
+  s.files       = `git ls-files`.split("\n")
   s.test_files  = `git ls-files -- spec/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
