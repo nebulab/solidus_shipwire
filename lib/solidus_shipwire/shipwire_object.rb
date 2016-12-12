@@ -6,4 +6,24 @@ class SolidusShipwire::ShipwireObject
     @object = object
     @attrs = attrs.with_indifferent_access
   end
+
+  def classification
+    @attrs[:classification]
+  end
+
+  def virtual_kit?
+    classification == 'virtualKit'
+  end
+
+  def base_product?
+    classification == 'baseProduct'
+  end
+
+  def marketing_insert?
+    classification == 'marketingInsert'
+  end
+
+  def kit?
+    classification == 'kit'
+  end
 end
