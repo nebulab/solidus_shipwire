@@ -10,10 +10,10 @@ module SolidusShipwire::Order
       orderId: id,
       orderNo: number,
       options: {
-        currency: 'USD',
-        canSplit: 1,
-        hold: 1,
-        server: 'Production'
+        currency: shipwire_currency,
+        canSplit: shipwire_can_split?,
+        hold: shipwire_hold?,
+        server: shipwire_server,
       },
       items: line_items_in_shipwire,
       shipTo: ship_address.to_shipwire.merge(email: email)
@@ -41,6 +41,22 @@ module SolidusShipwire::Order
 
   def to_shipwire_object(hash)
     ShipwireObject.new(hash['id'], self, hash)
+  end
+
+  def shipwire_can_split?
+    1
+  end
+
+  def shipwire_hold?
+    1
+  end
+
+  def shipwire_currency
+    'USD'
+  end
+
+  def shipwire_server
+    'Production'
   end
 end
 
