@@ -48,7 +48,7 @@ module SolidusShipwire::Order
   end
 
   def shipwire_hold?
-    1
+    0
   end
 
   def shipwire_currency
