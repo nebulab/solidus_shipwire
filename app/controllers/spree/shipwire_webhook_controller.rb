@@ -1,7 +1,7 @@
-class ShipwireWebhookController < ActionController::Base
+class Spree::ShipwireWebhookController < ActionController::Base
   respond_to :json
 
-  # before_action :validate_key, except: :subscribe
+  before_action :validate_key, except: :subscribe
 
   def subscribe
     head :ok
@@ -26,7 +26,7 @@ class ShipwireWebhookController < ActionController::Base
     Base64.encode64(
       OpenSSL::HMAC.digest(
         OpenSSL::Digest.new('sha256'),
-        Rails.application.secrets.shipwire['secret'],
+        Spree::SolidusShipwireConfig.secret,
         data
       )
     ).strip
