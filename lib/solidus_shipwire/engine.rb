@@ -11,6 +11,14 @@ module SolidusShipwire
       g.test_framework :rspec
     end
 
+    initializer 'solidus_shipwire.environment', before: 'spree.environment' do
+      Spree::SolidusShipwireConfig = Spree::SolidusShipwireConfiguration.new
+    end
+
+    initializer 'solidus_shipwire.environment', after: 'finisher_hook' do
+      Spree::SolidusShipwireConfig.set_shipwire
+    end
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
