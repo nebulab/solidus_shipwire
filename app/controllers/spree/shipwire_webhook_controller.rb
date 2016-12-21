@@ -26,7 +26,7 @@ class Spree::ShipwireWebhookController < ActionController::Base
     Base64.encode64(
       OpenSSL::HMAC.digest(
         OpenSSL::Digest.new('sha256'),
-        Spree::SolidusShipwireConfig.secret,
+        Spree::ShipwireConfig.secret,
         data
       )
     ).strip

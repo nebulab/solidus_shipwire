@@ -1,5 +1,5 @@
 module Spree
-  class SolidusShipwireConfiguration < Preferences::Configuration
+  class ShipwireConfiguration < Preferences::Configuration
     preference :username,     :string,  default: nil
     preference :password,     :string,  default: nil
     preference :open_timeout, :integer, default: 2
@@ -8,7 +8,7 @@ module Spree
     preference :logger,       :string,  default: false
     preference :secret,       :string,  default: nil
 
-    def set_shipwire
+    def setup_shipwire
       Shipwire.configure do |config|
         config.username     = username
         config.password     = password
