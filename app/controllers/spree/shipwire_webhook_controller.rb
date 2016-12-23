@@ -29,19 +29,12 @@ module Spree
       request.headers['HTTP_X_SHIPWIRE_SIGNATURE'] == calculated_hmac
     end
 
-    def data
-      request.body.rewind
-      request.body.read
-    end
-
     def calculated_hmac
-      Base64.encode64(
-        OpenSSL::HMAC.digest(
-          OpenSSL::Digest.new('sha256'),
-          Spree::ShipwireConfig.secret,
-          data
-        )
-      ).strip
+      OpenSSL::HMAC.hexdigest(
+        OpenSSL::Digest.new('SHA256'),
+        Spree::ShipwireConfig.secret,
+        request.raw_post
+      )
     end
   end
 end
