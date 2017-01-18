@@ -22,7 +22,9 @@ module Spree
     end
 
     def validate_key
-      render json: { result: :unauthorized }, status: :unauthorized unless valid_shipwire_token?
+      return if valid_shipwire_token?
+
+      render json: { result: :unauthorized }, status: :unauthorized
     end
 
     def valid_shipwire_token?
@@ -32,9 +34,13 @@ module Spree
     def calculated_hmac
       OpenSSL::HMAC.hexdigest(
         OpenSSL::Digest.new('SHA256'),
-        Spree::ShipwireConfig.secret,
+        bin_secret,
         request.raw_post
       )
+    end
+
+    def bin_secret
+      [Spree::ShipwireConfig.secret].pack("H*")
     end
   end
 end

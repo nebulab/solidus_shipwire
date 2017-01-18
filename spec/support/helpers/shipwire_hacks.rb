@@ -15,13 +15,11 @@ module ShipwireHacks
     private
 
     def signature(data)
-      Base64.encode64(
-        OpenSSL::HMAC.digest(
-          OpenSSL::Digest.new('sha256'),
-          Spree::ShipwireConfig.secret,
-          data
-        )
-      ).strip
+      OpenSSL::HMAC.hexdigest(
+        OpenSSL::Digest.new('sha256'),
+        [Spree::ShipwireConfig.secret].pack('H*'),
+        data
+      )
     end
   end
 end
