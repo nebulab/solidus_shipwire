@@ -9,7 +9,8 @@ module SolidusShipwire::AddressDecorator
       city: city,
       state: state_name,
       postalCode: zipcode,
-      country: country.iso
+      country: country.iso,
+      phone: phone
     }
   end
 end
