@@ -40,7 +40,7 @@ module SolidusShipwire::Order
   end
 
   def to_shipwire_object(hash)
-    ::SolidusShipwire::ShipwireObjects::Order.new(hash['id'], self, hash)
+    SolidusShipwire::ShipwireObjects::Order.new(hash['id'], self, hash)
   end
 
   def shipwire_can_split?
