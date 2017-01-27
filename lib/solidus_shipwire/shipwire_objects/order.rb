@@ -5,11 +5,11 @@ module SolidusShipwire
         @attrs[:status]
       end
 
-      def shipTo
+      def ship_to
         @attrs[:shipTo]
       end
 
-      def shipFrom
+      def ship_from
         @attrs[:shipFrom]
       end
     end
