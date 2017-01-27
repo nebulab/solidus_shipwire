@@ -22,7 +22,7 @@
       <%= render partial: 'spree/admin/orders/shipwire_error', error: @error %>
     </div>
     <% if @order.shipwire_id.nil? %>
-      <%= button_to Spree.t(:sync_with_shipwire), sync_with_shipwire_admin_order_url(@order), remote: true, method: :post %>
+      <%= link_to Spree.t(:sync_with_shipwire), shipwire_admin_order_url(@order), id: :retry_shipwire, remote: true %>
     <% end %>
     <div id='shipwire_data'>
       <% unless @order.shipwire_id.nil? %>
@@ -31,3 +31,9 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do -%>
+$('#retry_shipwire').bind('ajax:beforeSend', function() {
+  $('#errors').hide()
+});
+<% end %>

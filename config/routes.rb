@@ -6,7 +6,6 @@ Spree::Core::Engine.routes.draw do
       resources :orders, except: [:show] do
         member do
           get :shipwire
-          post :sync_with_shipwire
         end
       end
     end

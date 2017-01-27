@@ -1,18 +1,15 @@
 module SolidusShipwire
   module ShipwireController
     def self.prepended(base)
-      base.before_action :load_shipwire_order, only: [:shipwire, :sync_with_shipwire]
+      base.before_action :load_shipwire_order, only: [:shipwire]
     end
 
     def shipwire
       order_to_shipwire
-    end
 
-    def sync_with_shipwire
       respond_to do |format|
-        format.js do
-          order_to_shipwire
-        end
+        format.html
+        format.js
       end
     end
 
