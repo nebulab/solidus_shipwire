@@ -33,7 +33,7 @@ module SolidusShipwire
 
     def create_on_shipwire(obj)
       response = Shipwire::Products.new.create(obj)
-      raise response.error_report unless response.ok?
+      raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
       self.update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
       find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
     end
