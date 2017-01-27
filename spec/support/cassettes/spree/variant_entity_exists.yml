@@ -21,13 +21,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 07 Nov 2016 13:09:34 GMT
+      - Fri, 27 Jan 2017 10:46:48 GMT
       Server:
       - Apache
       X-Process-Time-Seconds:
-      - '0.190657'
+      - '0.168965'
       X-Request-Id:
-      - fb83d7554196161566971241faab5092
+      - 23b477fbb0297fd52b412c0259cefb3b
       Vary:
       - Accept-Encoding
       Strict-Transport-Security:
@@ -36,13 +36,13 @@ http_interactions:
       - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
         OUR IND"
       Content-Length:
-      - '484'
+      - '492'
       Content-Type:
       - application/json
     body:
       encoding: ASCII-8BIT
-      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/229059","resource":{"id":229059,"externalId":null,"sku":"SKU-2","description":"Product
-        #1 - 9398","hsCode":null,"countryOfOrigin":"US","creationDate":"2016-11-07T05:09:33-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/229059\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/229059\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}'
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/0","resource":{"id":0,"externalId":null,"sku":"F003-0","description":"The
+        Floyd Utility Set","hsCode":null,"countryOfOrigin":"US","creationDate":"2016-12-09T06:40:17-08:00","archivedDate":null,"status":"outofstock","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/0\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/0\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}'
     http_version: 
-  recorded_at: Mon, 07 Nov 2016 13:09:34 GMT
+  recorded_at: Fri, 27 Jan 2017 10:46:48 GMT
 recorded_with: VCR 3.0.3
