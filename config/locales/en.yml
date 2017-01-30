@@ -3,3 +3,12 @@
 
 en:
   hello: "Hello world"
+  shipwire:
+    name: Shipwire
+    ship_to: Ship To
+    ship_from: Ship From
+    status: Status
+    synced: Synced
+    not_synced: Not Synced
+  spree:
+    sync_with_shipwire: Sync In Shipwire
