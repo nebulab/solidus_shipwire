@@ -30,14 +30,12 @@ bundle exec rake db:migrate
 Basic configuration
 
 ```
-# config/initializers/shipwire.rb
-Shipwire.configure do |config|
+# config/initializers/spree.rb
+Spree::ShipwireConfig.configure do |config|
   config.username = "<%= ENV['SHIPWIRE_USERNAME'] %>"
   config.password = "<%= ENV['SHIPWIRE_PASSWORD'] %>"
 end
 ```
-
-refer to [Shipwire gem](https://github.com/billr578/shipwire)
 
 ## Sync shipwire
 
