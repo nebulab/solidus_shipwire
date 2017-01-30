@@ -31,19 +31,14 @@ module SolidusShipwire
       }
     end
 
-    def create_on_shipwire(obj)
-      response = Shipwire::Products.new.create(obj)
-      raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
-      self.update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
-      find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
-    end
-
-    def find_on_shipwire shipwire_id
-      Shipwire::Products.new.find shipwire_id
-    end
-
     def to_shipwire_object(hash)
       ShipwireObject.new(hash["id"], self, hash)
+    end
+
+    private
+
+    def shipwire_instance
+      Shipwire::Products.new
     end
   end
 end

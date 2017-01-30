@@ -18,5 +18,22 @@ module SolidusShipwire
 
       to_shipwire_object(shipwire_response.body['resource'])
     end
+
+    def find_on_shipwire(shipwire_id)
+      shipwire_instance.find shipwire_id
+    end
+
+    def shipwire_instance
+      @order ||= super
+    rescue NoMethosError
+      raise 'override shipwire_instance'
+    end
+
+    def create_on_shipwire(obj)
+      response = shipwire_instance.create(obj)
+      raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
+      self.update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
+      find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
+    end
   end
 end
