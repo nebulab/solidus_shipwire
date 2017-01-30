@@ -1,0 +1,2 @@
+<!-- insert_before '[data-hook=admin_orders_index_header_actions]' -->
+<th><%= t 'shipwire.name' %></th>
