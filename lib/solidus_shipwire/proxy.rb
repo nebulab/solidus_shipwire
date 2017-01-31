@@ -1,12 +1,12 @@
 module SolidusShipwire
   module Proxy
-    def self.prepended(_base)
+    def self.prepended(base)
       klass = Class.new SolidusShipwire::ShipwireObject
-      _base.const_set 'ShipwireObject', klass
+      base.const_set 'ShipwireObject', klass
     end
 
     def in_shipwire
-      @object ||= find_or_create_on_shipwire_api(shipwire_id)
+      find_or_create_on_shipwire_api(shipwire_id)
     end
 
     def find_or_create_on_shipwire_api(shipwire_id)
@@ -23,16 +23,20 @@ module SolidusShipwire
       shipwire_instance.find shipwire_id
     end
 
+    def update_on_shipwire
+      shipwire_instance.update(shipwire_id, to_shipwire)
+    end
+
     def shipwire_instance
-      @order ||= super
-    rescue NoMethosError
+      super
+    rescue NoMethodError
       raise 'override shipwire_instance'
     end
 
     def create_on_shipwire(obj)
       response = shipwire_instance.create(obj)
       raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
-      self.update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
+      update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
       find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
     end
   end
