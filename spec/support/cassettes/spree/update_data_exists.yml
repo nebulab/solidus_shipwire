@@ -1,0 +1,252 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/92297445
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R176059823","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","city":"Herndon","state":null,"postalCode":"10584-5150","country":"US","phone":"555-555-0199","email":"morton@swaniawskiwitting.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:37:00 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.290567'
+      X-Request-Id:
+      - c9598102fcc792808fda50e85c9a80a9
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1080'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445","resource":{"externalId":null,"orderNo":"R176059823","commerceName":"Shipwire","processAfterDate":"2017-01-31T13:30:00-08:00","lastUpdatedDate":"2017-01-30T08:55:38-08:00","status":"held","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92297445,"transactionId":"1485515242-405242-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":null,"warehouseExternalId":null,"warehouseRegion":null,"warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PMFPE","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"referrer":""}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Fulfillment
+        Center"}},"shipTo":{"resourceLocation":null,"resource":{"email":"morton@swaniawskiwitting.com","name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","address3":"","city":"Herndon","state":"NY","postalCode":"10584","country":"US","phone":"555-555-0199","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":null},"packingList":{"resourceLocation":null},"shippingLabel":{"resourceLocation":null},"routing":{"resourceLocation":null,"resource":{"warehouseId":12,"warehouseExternalId":null,"warehouseName":"Philadelphia","physicalWarehouseId":12,"originLongitude":40.06,"originLatitude":-76.41,"destinationLongitude":"-96.0858","destinationLatitude":"29.3205"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-01-27T03:07:22-08:00","pickedUpDate":null,"submittedDate":null,"processedDate":null,"completedDate":null,"expectedDate":"2017-02-06T00:00:00-08:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":"2017-01-30T08:55:38-08:00"}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":null}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":7.02,"insurance":0,"shipping":7.02,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/pieces?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:37:00 GMT
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/92297445
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R176059823","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","city":"Herndon","state":null,"postalCode":"10584-5150","country":"US","phone":"555-555-0199","email":"morton@swaniawskiwitting.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:37:01 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.457701'
+      X-Request-Id:
+      - 51ca2866658005e9236db8c625bf967a
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1080'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445","resource":{"externalId":null,"orderNo":"R176059823","commerceName":"Shipwire","processAfterDate":"2017-01-31T13:30:00-08:00","lastUpdatedDate":"2017-01-30T08:55:38-08:00","status":"held","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92297445,"transactionId":"1485515242-405242-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":null,"warehouseExternalId":null,"warehouseRegion":null,"warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PMFPE","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"referrer":""}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Fulfillment
+        Center"}},"shipTo":{"resourceLocation":null,"resource":{"email":"morton@swaniawskiwitting.com","name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","address3":"","city":"Herndon","state":"NY","postalCode":"10584","country":"US","phone":"555-555-0199","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":null},"packingList":{"resourceLocation":null},"shippingLabel":{"resourceLocation":null},"routing":{"resourceLocation":null,"resource":{"warehouseId":12,"warehouseExternalId":null,"warehouseName":"Philadelphia","physicalWarehouseId":12,"originLongitude":40.06,"originLatitude":-76.41,"destinationLongitude":"-96.0858","destinationLatitude":"29.3205"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-01-27T03:07:22-08:00","pickedUpDate":null,"submittedDate":null,"processedDate":null,"completedDate":null,"expectedDate":"2017-02-06T00:00:00-08:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":"2017-01-30T08:55:38-08:00"}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":null}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":7.02,"insurance":0,"shipping":7.02,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/pieces?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:37:02 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/orders/92297445
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:37:02 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.155060'
+      X-Request-Id:
+      - 5b69b8fdd0c8ed02d747b6a53ecab8ef
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1080'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445","resource":{"externalId":null,"orderNo":"R176059823","commerceName":"Shipwire","processAfterDate":"2017-01-31T13:30:00-08:00","lastUpdatedDate":"2017-01-30T08:55:38-08:00","status":"held","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92297445,"transactionId":"1485515242-405242-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":null,"warehouseExternalId":null,"warehouseRegion":null,"warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PMFPE","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"referrer":""}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Fulfillment
+        Center"}},"shipTo":{"resourceLocation":null,"resource":{"email":"morton@swaniawskiwitting.com","name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","address3":"","city":"Herndon","state":"NY","postalCode":"10584","country":"US","phone":"555-555-0199","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":null},"packingList":{"resourceLocation":null},"shippingLabel":{"resourceLocation":null},"routing":{"resourceLocation":null,"resource":{"warehouseId":12,"warehouseExternalId":null,"warehouseName":"Philadelphia","physicalWarehouseId":12,"originLongitude":40.06,"originLatitude":-76.41,"destinationLongitude":"-96.0858","destinationLatitude":"29.3205"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-01-27T03:07:22-08:00","pickedUpDate":null,"submittedDate":null,"processedDate":null,"completedDate":null,"expectedDate":"2017-02-06T00:00:00-08:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":"2017-01-30T08:55:38-08:00"}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":null}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":7.02,"insurance":0,"shipping":7.02,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/pieces?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:37:03 GMT
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/92297445
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R176059823","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[{"sku":"SKU-3","quantity":1,"commercialInvoiceValue":"10.0","commercialInvoiceValueCurrency":"USD"}],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","city":"Herndon","state":null,"postalCode":"10584-5150","country":"US","phone":"123123123","email":"morton@swaniawskiwitting.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:37:03 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '1.419651'
+      X-Request-Id:
+      - c980a74876912b91772da3add309fc61
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1076'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445","resource":{"externalId":null,"orderNo":"R176059823","commerceName":"Shipwire","processAfterDate":"2017-01-31T13:30:00-08:00","lastUpdatedDate":"2017-01-30T08:55:38-08:00","status":"held","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92297445,"transactionId":"1485515242-405242-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":null,"warehouseExternalId":null,"warehouseRegion":null,"warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PMFPE","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"referrer":""}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Fulfillment
+        Center"}},"shipTo":{"resourceLocation":null,"resource":{"email":"morton@swaniawskiwitting.com","name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","address3":"","city":"Herndon","state":"NY","postalCode":"10584","country":"US","phone":"123123123","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":null},"packingList":{"resourceLocation":null},"shippingLabel":{"resourceLocation":null},"routing":{"resourceLocation":null,"resource":{"warehouseId":12,"warehouseExternalId":null,"warehouseName":"Philadelphia","physicalWarehouseId":12,"originLongitude":40.06,"originLatitude":-76.41,"destinationLongitude":"-96.0858","destinationLatitude":"29.3205"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-01-27T03:07:22-08:00","pickedUpDate":null,"submittedDate":null,"processedDate":null,"completedDate":null,"expectedDate":"2017-02-06T00:00:00-08:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":"2017-01-30T08:55:38-08:00"}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":null}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":7.02,"insurance":0,"shipping":7.02,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/pieces?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:37:05 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/orders/92297445
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:37:05 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.127931'
+      X-Request-Id:
+      - 8c3cd805846a987e40eda24dba50828f
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1076'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445","resource":{"externalId":null,"orderNo":"R176059823","commerceName":"Shipwire","processAfterDate":"2017-01-31T13:30:00-08:00","lastUpdatedDate":"2017-01-30T08:55:38-08:00","status":"held","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92297445,"transactionId":"1485515242-405242-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":null,"warehouseExternalId":null,"warehouseRegion":null,"warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PMFPE","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"referrer":""}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Fulfillment
+        Center"}},"shipTo":{"resourceLocation":null,"resource":{"email":"morton@swaniawskiwitting.com","name":"John
+        Doe","company":"Company","address1":"A Different Road","address2":"Northwest","address3":"","city":"Herndon","state":"NY","postalCode":"10584","country":"US","phone":"123123123","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":null},"packingList":{"resourceLocation":null},"shippingLabel":{"resourceLocation":null},"routing":{"resourceLocation":null,"resource":{"warehouseId":12,"warehouseExternalId":null,"warehouseName":"Philadelphia","physicalWarehouseId":12,"originLongitude":40.06,"originLatitude":-76.41,"destinationLongitude":"-96.0858","destinationLatitude":"29.3205"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-01-27T03:07:22-08:00","pickedUpDate":null,"submittedDate":null,"processedDate":null,"completedDate":null,"expectedDate":"2017-02-06T00:00:00-08:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":"2017-01-30T08:55:38-08:00"}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":null}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":7.02,"insurance":0,"shipping":7.02,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92297445\/pieces?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:37:05 GMT
+recorded_with: VCR 3.0.3

@@ -1,15 +1,15 @@
 require 'spree/testing_support/order_walkthrough'
 
 describe Spree::Order do
-  let!(:order) { create(:order_with_line_items, state: :confirm) }
+  context 'order in confirm state',
+    vcr: { cassette_name: 'spree/confirm_state' } do
 
-  context 'order in confirm state' do
     let!(:order) { OrderWalkthrough.up_to(:payment) }
 
     context 'have at least one variant synced in shipwire' do
       before do
         variant = order.line_items.first.variant
-        variant.update_attribute(:shipwire_id, '123456')
+        variant.update_attribute(:shipwire_id, '229175')
       end
 
       it 'run sync when completed' do
@@ -17,9 +17,21 @@ describe Spree::Order do
 
         order.complete!
       end
+
+      context 'with specified shipwire_id' do
+        before do
+          order.update_attribute(:shipwire_id, '92297445')
+        end
+
+        it_behaves_like 'a shipwire object'
+      end
     end
 
     context 'without variant synced in shipwire' do
+      before do
+        variant = order.line_items.first.variant
+        variant.update_attribute(:shipwire_id, nil)
+      end
       it 'run sync when completed' do
         expect(order).to_not receive(:in_shipwire)
 
@@ -28,5 +40,17 @@ describe Spree::Order do
     end
   end
 
-  it_behaves_like 'a shipwire object'
+  context 'change phone_number',
+    vcr: { cassette_name: 'spree/update_data_exists' } do
+    let!(:order) { create(:order_with_line_items, state: :complete, shipwire_id: '92297445') }
+
+    it 'update phone number' do
+      expect(order.in_shipwire.ship_to['resource']['phone']).to eq '555-555-0199'
+
+      order.ship_address_attributes = { phone: '123123123' }
+      order.save
+      order.reload
+      expect(order.in_shipwire.ship_to['resource']['phone']).to eq '123123123'
+    end
+  end
 end

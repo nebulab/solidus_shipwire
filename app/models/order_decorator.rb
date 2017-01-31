@@ -2,7 +2,7 @@ module SolidusShipwire::Order
   prepend SolidusShipwire::Proxy
 
   def self.prepended(base)
-    #base.after_save :update_on_shipwire
+    base.after_save :update_on_shipwire, if: :complete?
     base.state_machine.after_transition to: :complete, do: :in_shipwire, if: :line_items_in_shipwire?
   end
 
@@ -14,7 +14,7 @@ module SolidusShipwire::Order
         currency: shipwire_currency,
         canSplit: shipwire_can_split?,
         hold: shipwire_hold?,
-        server: shipwire_server,
+        server: shipwire_server
       },
       items: line_items_in_shipwire,
       shipTo: ship_address.to_shipwire.merge(email: email)

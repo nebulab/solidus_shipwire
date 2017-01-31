@@ -2,96 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.beta.shipwire.com/api/v3/products/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - "<Authorization Code>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 400
-      message: Bad Request
-    headers:
-      Date:
-      - Fri, 27 Jan 2017 10:32:55 GMT
-      Server:
-      - Apache
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      P3p:
-      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
-        OUR IND"
-      Content-Length:
-      - '43'
-      Connection:
-      - close
-      Content-Type:
-      - application/json
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":"Bad request"}'
-    http_version: 
-  recorded_at: Fri, 27 Jan 2017 10:32:55 GMT
-- request:
-    method: post
-    uri: https://api.beta.shipwire.com/api/v3/products
-    body:
-      encoding: UTF-8
-      string: '[{"sku":"test-random","classification":"baseProduct","description":"Product
-        #1 - 6877","countryOfOrigin":"US","category":"FURNITURE_&_APPLIANCES","batteryConfiguration":"NOBATTERY","values":{"costValue":"19.99","retailValue":"19.99","costCurrency":"USD","retailCurrency":"USD"},"dimensions":{"length":1,"width":10,"height":1,"weight":1}}]'
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Authorization:
-      - "<Authorization Code>"
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Fri, 27 Jan 2017 10:32:56 GMT
-      Server:
-      - Apache
-      X-Process-Time-Seconds:
-      - '0.528568'
-      X-Request-Id:
-      - d018473adc3d1ea399680cb85b0b2474
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      P3p:
-      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
-        OUR IND"
-      Content-Length:
-      - '527'
-      Content-Type:
-      - application/json
-    body:
-      encoding: ASCII-8BIT
-      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products?offset=0&limit=1","resource":{"offset":0,"total":1,"previous":null,"next":null,"items":[{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/236373","resource":{"id":236373,"externalId":null,"sku":"test-random","description":"Product
-        #1 - 6877","hsCode":null,"countryOfOrigin":"US","creationDate":"2017-01-27T02:32:56-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/236373\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/236373\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}]}}'
-    http_version: 
-  recorded_at: Fri, 27 Jan 2017 10:32:56 GMT
-- request:
-    method: get
     uri: https://api.beta.shipwire.com/api/v3/products/236373
     body:
       encoding: US-ASCII
@@ -135,4 +45,184 @@ http_interactions:
         #1 - 6877","hsCode":null,"countryOfOrigin":"US","creationDate":"2017-01-27T02:32:56-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/236373\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/236373\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}'
     http_version: 
   recorded_at: Fri, 27 Jan 2017 10:32:57 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/products/237079
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 14:54:58 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.167372'
+      X-Request-Id:
+      - b9564409df4b24ad690a219a8bbd2e3f
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '485'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237079","resource":{"id":237079,"externalId":null,"sku":"SKU-11","description":"Product
+        #8 - 5635","hsCode":null,"countryOfOrigin":"US","creationDate":"2017-01-31T06:54:57-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237079\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237079\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 14:54:58 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/products/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:31:13 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '43'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"Bad request"}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:31:13 GMT
+- request:
+    method: post
+    uri: https://api.beta.shipwire.com/api/v3/products
+    body:
+      encoding: UTF-8
+      string: '[{"sku":"SKU-123354","classification":"baseProduct","description":"Product
+        #1 - 1371","countryOfOrigin":"US","category":"FURNITURE_&_APPLIANCES","batteryConfiguration":"NOBATTERY","values":{"costValue":"19.99","retailValue":"19.99","costCurrency":"USD","retailCurrency":"USD"},"dimensions":{"length":1,"width":10,"height":1,"weight":1}}]'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:31:14 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.288964'
+      X-Request-Id:
+      - 29d6dd8d87c1b74f7dc0e0051ffc5b8f
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '527'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products?offset=0&limit=1","resource":{"offset":0,"total":1,"previous":null,"next":null,"items":[{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080","resource":{"id":237080,"externalId":null,"sku":"SKU-123354","description":"Product
+        #1 - 1371","hsCode":null,"countryOfOrigin":"US","creationDate":"2017-01-31T07:31:14-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}]}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:31:14 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/products/237080
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:31:15 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.168046'
+      X-Request-Id:
+      - bbd367816f605c05f3d7d3c28c25274a
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '486'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080","resource":{"id":237080,"externalId":null,"sku":"SKU-123354","description":"Product
+        #1 - 1371","hsCode":null,"countryOfOrigin":"US","creationDate":"2017-01-31T07:31:14-08:00","archivedDate":null,"status":"notinuse","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080\/alternateNames?offset=0&limit=20"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/237080\/enqueuedDimensions?offset=0&limit=20"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:31:15 GMT
 recorded_with: VCR 3.0.3
