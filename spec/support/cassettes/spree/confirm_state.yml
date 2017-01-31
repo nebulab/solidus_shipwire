@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R568790209","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"10 Lovely Street","address2":"Northwest","city":"Herndon","state":null,"postalCode":"13547-1343","country":"US","phone":"555-555-0199","email":"spree@example.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:32:28 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '43'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"Bad request"}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:32:28 GMT
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R568790209","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"10 Lovely Street","address2":"Northwest","city":"Herndon","state":null,"postalCode":"13547-1343","country":"US","phone":"555-555-0199","email":"spree@example.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:32:28 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '43'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"Bad request"}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:32:29 GMT
+- request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R568790209","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        Doe","company":"Company","address1":"10 Lovely Street","address2":"Northwest","city":"Herndon","state":null,"postalCode":"13547-1343","country":"US","phone":"555-555-0199","email":"spree@example.com"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 31 Jan 2017 15:32:29 GMT
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '43'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"Bad request"}'
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 15:32:29 GMT
+recorded_with: VCR 3.0.3
