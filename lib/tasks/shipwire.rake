@@ -14,6 +14,7 @@ namespace :solidus_shipwire do
       params[:offset] = limit * page
 
       shipwire_response = Shipwire::Products.new.list(params)
+
       sku_id_hashmap.merge! shipwire_response.to_sku_id_hashmap
 
       page += 1
@@ -24,16 +25,53 @@ namespace :solidus_shipwire do
       update_shipwire_id(sku, shipwire_id)
     end
 
+    stock_massive_sync
+
     print_results(results)
+  end
+
+  task stock_massive_sync: :environment do
+    stock_massive_sync
   end
 
   private
 
+  def stock_massive_sync(shipwire_ids = nil)
+    page = 0
+
+    loop do
+      limit = 20
+      params ||= { limit: limit }
+      params[:offset] = limit * page
+      params[:productId] = shipwire_ids unless shipwire_ids.nil?
+      stocks_response = Shipwire::Stock.new.list(params)
+
+      stocks_response.body['resource']['items'].each do |shipwire_stock|
+        stock_item = Spree::StockItem.joins(:variant, :stock_location).find_by(
+          spree_variants: {
+            shipwire_id: shipwire_stock['resource']['productId']
+          }, spree_stock_locations: {
+            shipwire_id: shipwire_stock['resource']['warehouseId']
+          }
+        )
+
+        next if stock_item.nil?
+
+        results[:update_stock][stock_item.variant.sku] = shipwire_stock['resource']['good']
+        stock_item.update_attribute(:count_on_hand, shipwire_stock['resource']['good'])
+      end
+
+      page += 1
+      break unless stocks_response.next?
+    end
+  end
+
   def results
     @results ||= {
-      updated:   {},
-      skipped:   {},
-      not_found: {}
+      updated:      {},
+      skipped:      {},
+      update_stock: {},
+      not_found:    {}
     }
   end
 
