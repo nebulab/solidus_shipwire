@@ -27,8 +27,14 @@ module Spree
       render json: { result: :unauthorized }, status: :unauthorized
     end
 
+    def signature
+      return '' if request.headers['HTTP_X_SHIPWIRE_SIGNATURE'].nil?
+
+      request.headers['HTTP_X_SHIPWIRE_SIGNATURE'].split(';').first
+    end
+
     def valid_shipwire_token?
-      request.headers['HTTP_X_SHIPWIRE_SIGNATURE'] == calculated_hmac
+      signature == calculated_hmac
     end
 
     def calculated_hmac

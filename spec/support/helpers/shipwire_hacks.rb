@@ -9,7 +9,7 @@ module ShipwireHacks
 
   module SignatureHelpers
     def signature_hash(params)
-      { 'X-Shipwire-Signature' => signature(params.to_json) }
+      { 'X-Shipwire-Signature' => "#{signature(params.to_json)};secret=1" }
     end
 
     private
