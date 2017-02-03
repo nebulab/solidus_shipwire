@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency %q<solidus_backend>, ['< 3', '>= 1.0.6']
   s.add_dependency %q<shipwire>, '~> 2.0'
 
+  s.add_development_dependency 'appraisal', '~> 2.1'
   s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails', '~> 3.0'
