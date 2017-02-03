@@ -45,7 +45,7 @@ Sync all variants to shipwire
 be rake solidus_shipwire:sync_variants
 ```
 
-If you already have your variants in shipwire, you can create variants with same 
+If you already have your variants in shipwire, you can create variants with same
 sku on solidus and run:
 
 ```

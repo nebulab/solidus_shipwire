@@ -1,9 +1,15 @@
-sudo: false
-cache: bundler
 language: ruby
+before_install: "gem install bundler"
+script: 'bundle exec rake'
 notifications:
   email:
-    - ksemuldie@gmail.com
-branches:
-  only:
-    - master
+    - danielepalombo@nebulab.it
+gemfile:
+  - gemfiles/solidus_v1.0.gemfile
+  - gemfiles/solidus_v1.1.gemfile
+  - gemfiles/solidus_v1.2.gemfile
+  - gemfiles/solidus_v1.3.gemfile
+  - gemfiles/solidus_v1.4.gemfile
+  - gemfiles/solidus_v2.0.gemfile
+  - gemfiles/solidus_v2.1.gemfile
+  - gemfiles/solidus_master.gemfile
