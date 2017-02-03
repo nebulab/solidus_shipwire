@@ -1,6 +1,7 @@
 RSpec.describe Spree::ShipwireWebhookController, type: :controller do
   controller Spree::ShipwireWebhookController do
     def create
+      render json: {}, status: :no_content
     end
   end
 
@@ -14,8 +15,8 @@ RSpec.describe Spree::ShipwireWebhookController, type: :controller do
     let(:order) { create(:order) }
 
     before do
-      @request.headers.merge headers
-      post :create, body: shipwire_params.to_json, format: :json
+      @request.headers.merge! headers
+      post :create, shipwire_params.to_json, format: :json
     end
 
     context 'without valid signature' do

@@ -40,7 +40,7 @@ module Spree
       end
 
       def body
-        @body ||= params['body']
+        @body ||= JSON.parse(request.raw_post)['body']
       end
     end
   end
