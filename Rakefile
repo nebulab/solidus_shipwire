@@ -1,5 +1,5 @@
-require "rubygems"
-require "bundler/setup"
+require 'rubygems'
+require 'bundler/setup'
 
 require 'bundler'
 Bundler::GemHelper.install_tasks
@@ -10,10 +10,13 @@ require 'spree/testing_support/common_rake'
 RSpec::Core::RakeTask.new
 
 task :default do
-  if Dir['spec/dummy'].empty?
-    Rake::Task[:test_app].invoke
-    Dir.chdir('../../')
+  if ENV['APPRAISAL_INITIALIZED'].present?
+    Rake::Task[:appraisal].invoke if !ENV['APPRAISAL_INITIALIZED'] && !ENV['TRAVIS']
   end
+
+  Rake::Task[:test_app].invoke
+  Dir.chdir('../../')
+
   Rake::Task[:spec].invoke
 end
 
