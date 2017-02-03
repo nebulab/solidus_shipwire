@@ -29,7 +29,14 @@ RSpec.describe Spree::ShipwireWebhooks::StockController, type: :controller do
     stock_location.update_attribute(:shipwire_id, '5678')
   end
 
-  subject { post :create, stock_params.to_json, format: :json }
+  subject do
+    if Rails.version >= '5.0'
+      @request.headers['Content-Type'] = 'application/json'
+      post :create, params: stock_params
+    else
+      post :create, stock_params.to_json, format: :json
+    end
+  end
 
   context 'when receive stock webhook' do
     it 'Add a StockMovement' do

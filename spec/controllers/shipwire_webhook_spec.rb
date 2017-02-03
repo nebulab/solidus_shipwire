@@ -16,7 +16,13 @@ RSpec.describe Spree::ShipwireWebhookController, type: :controller do
 
     before do
       @request.headers.merge! headers
-      post :create, shipwire_params.to_json, format: :json
+
+      if Rails.version >= '5.0'
+        @request.headers['Content-Type'] = 'application/json'
+        post :create, params: shipwire_params
+      else
+        post :create, shipwire_params.to_json, format: :json
+      end
     end
 
     context 'without valid signature' do
