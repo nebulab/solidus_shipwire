@@ -1,6 +1,6 @@
 # SolidusShipwire 
 
-[![Build Status](https://travis-ci.org/nebulab/solidus_shipwire.svg?branch=master)](https://travis-ci.org/nebulab/solidus_shipwire.svg?branch=master)
+[![Build Status](https://travis-ci.org/nebulab/solidus_shipwire.svg)](https://travis-ci.org/nebulab/solidus_shipwire)
 
 solidus and shipwire connect manager.
 
