@@ -4,9 +4,9 @@ RSpec.describe Spree::ShipwireWebhooks::StockController, type: :controller do
   controller Spree::ShipwireWebhooks::StockController do
   end
 
-  let(:stock_item) { create(:stock_item) }
-  let(:variant) { stock_item.variant }
-  let(:stock_location) { stock_item.stock_location }
+  let(:stock_item) { create(:stock_item, variant: variant, stock_location: stock_location) }
+  let(:variant) { create(:variant) }
+  let(:stock_location) { create(:stock_location) }
   let(:delta) { 13 }
 
   let(:stock_params) do
@@ -29,7 +29,11 @@ RSpec.describe Spree::ShipwireWebhooks::StockController, type: :controller do
     stock_location.update_attribute(:shipwire_id, '5678')
   end
 
-  subject { post :create, params: stock_params, format: :json }
+  subject do
+    @request.headers['RAW_POST_DATA'] = stock_params.to_json
+    @request.headers['Content-Type'] = 'application/json'
+    post :create, params: stock_params
+  end
 
   context 'when receive stock webhook' do
     it 'Add a StockMovement' do
@@ -38,6 +42,9 @@ RSpec.describe Spree::ShipwireWebhooks::StockController, type: :controller do
     end
 
     it 'change' do
+      # Fix version < 1.2 https://github.com/solidusio/solidus/commit/0d76a2121c9549823c4cd0b6d4c751b4094375ca
+      Spree::StockItem.delete_all
+
       expect { subject }.to change { stock_item.reload.count_on_hand }.by(13)
     end
   end
