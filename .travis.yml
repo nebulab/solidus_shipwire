@@ -3,7 +3,7 @@ cache: bundler
 language: ruby
 notifications:
   email:
-    - ksemuldie@gmail.com
+    - danielepalombo@nebulab.it
 branches:
   only:
     - master

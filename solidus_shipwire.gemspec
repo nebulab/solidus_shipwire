@@ -4,12 +4,13 @@ Gem::Specification.new do |s|
   s.name        = 'solidus_shipwire'
   s.version     = '1.0.0'
   s.summary     = 'Solidus shipwire integration'
-  s.description = 'Solidus shipwire integration'
+  s.description = 'This extension provide the ability to connect in a easy '+
+                  'way your store and shipwire through API and Webhooks'
   s.required_ruby_version = '>= 1.8.7'
 
-  s.author    = 'Daniele Palombo'
-  s.email     = 'danielepalombo@nebulab.it'
-  s.homepage  = 'http://github.com/nebulab/solidus_shipwire'
+  s.author   = 'Daniele Palombo'
+  s.email    = 'danielepalombo@nebulab.it'
+  s.homepage = 'http://github.com/solidusio-contrib/solidus_shipwire'
 
   s.files       = `git ls-files`.split("\n")
   s.test_files  = `git ls-files -- spec/*`.split("\n")
