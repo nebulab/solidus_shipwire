@@ -13,7 +13,7 @@ module SolidusShipwire
       shipwire_response = find_on_shipwire(shipwire_id)
 
       unless shipwire_response.ok?
-        shipwire_response = create_on_shipwire(to_shipwire)
+        shipwire_response = create_on_shipwire
       end
 
       to_shipwire_object(shipwire_response.body['resource'])
@@ -33,8 +33,8 @@ module SolidusShipwire
       raise 'override shipwire_instance'
     end
 
-    def create_on_shipwire(obj)
-      response = shipwire_instance.create(obj)
+    def create_on_shipwire
+      response = shipwire_instance.create(to_shipwire)
       raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
       update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
       find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
