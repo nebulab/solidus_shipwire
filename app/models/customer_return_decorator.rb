@@ -2,27 +2,17 @@ module SolidusShipwire::CustomerReturn
   prepend SolidusShipwire::Proxy
 
   def self.prepended(base)
-    base.after_save :return!
-  end
-
-  def return!
-    if shipwire_order
-      @shipwire_return = shipwire_instance.create(to_shipwire)
-      @shipwire_return.validation_errors.empty?
-    else
-      false
-    end
+    base.after_save :process_shipwire_return!, if: :create_on_shipwire?
   end
 
   def to_shipwire
     {
-      externalId: order.number,
+      # externalId: order.number,
       originalOrder: {
         id: order.shipwire_id.to_s
       },
-      items: [
-        shipwire_line_items.map { |s, q| { sku: s, quantity: q } }
-      ],
+      items:
+        shipwire_line_items.map { |s, q| { sku: s, quantity: q } },
       options: {
         generatePrepaidLabel: generate_prepaid_label,
         emailCustomer: email_customer,
@@ -34,6 +24,21 @@ module SolidusShipwire::CustomerReturn
   end
 
   private
+
+  def create_on_shipwire?
+    shipwire_order
+  end
+
+  def process_shipwire_return!
+    create_on_shipwire
+    rescue SolidusShipwire::ResponseException => e
+      errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
+    end
+  end
+
+  def to_shipwire_object(hash)
+    SolidusShipwire::ShipwireObjects::Return.new(hash['id'], self, hash)
+  end
 
   def shipwire_line_items
     return_items.each_with_object(Hash.new(0)) do |item, hash|
