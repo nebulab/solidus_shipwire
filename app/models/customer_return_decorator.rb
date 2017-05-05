@@ -7,7 +7,7 @@ module SolidusShipwire::CustomerReturn
 
   def to_shipwire
     {
-      # externalId: order.number,
+      externalId: order.number,
       originalOrder: {
         id: order.shipwire_id.to_s
       },
@@ -31,9 +31,8 @@ module SolidusShipwire::CustomerReturn
 
   def process_shipwire_return!
     create_on_shipwire
-    rescue SolidusShipwire::ResponseException => e
-      errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
-    end
+  rescue SolidusShipwire::ResponseException => e
+    errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
   end
 
   def to_shipwire_object(hash)
