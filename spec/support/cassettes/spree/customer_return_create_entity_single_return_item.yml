@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/orders/92468844
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 10 May 2017 13:09:13 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.146962'
+      X-Request-Id:
+      - f63f4c12d476720ff95511d1843a1163
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1129'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844","resource":{"externalId":null,"orderNo":"R983900536","commerceName":"Shipwire","processAfterDate":null,"lastUpdatedDate":"2017-05-10T06:07:24-07:00","status":"completed","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92468844,"transactionId":"1494421110-739717-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":10294,"physicalWarehouseId":null,"warehouseExternalId":null,"warehouseRegion":"TEST1","warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PM","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierId":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"localizationCode":null,"forceOverPack":null,"referrer":"","carrierType":null}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Beta
+        Shipwire"}},"shipTo":{"resourceLocation":null,"resource":{"email":"spree@example.com","name":"Paolo
+        Tatone","company":null,"address1":"12311 185TH AVE SE","address2":null,"address3":null,"city":"BIG
+        LAKE","state":"MN","postalCode":"55309","country":"US","phone":"2312312321","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/commercialInvoice"},"packingList":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/packingList"},"shippingLabel":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/shippingLabel"},"routing":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseName":"Test","physicalWarehouseId":null,"originLongitude":42.4081,"originLatitude":-83.0583,"destinationLongitude":"-93.7399","destinationLatitude":"45.3506"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-05-10T05:58:30-07:00","pickedUpDate":null,"submittedDate":"2017-05-10T06:07:24-07:00","processedDate":"2017-05-10T06:07:24-07:00","completedDate":"2017-05-10T06:07:24-07:00","expectedSubmittedDate":"2017-05-10T06:07:24-07:00","expectedCompletedDate":"2017-05-10T06:07:24-07:00","expectedDate":"2017-05-15T00:00:00-07:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":null}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":"Waiting
+        Review"}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":6.83,"insurance":0,"shipping":6.83,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/pieces?offset=0&limit=20"},"extendedAttributes":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844\/extendedAttributes?offset=0&limit=20"}}}'
+    http_version: 
+  recorded_at: Wed, 10 May 2017 13:09:13 GMT
+- request:
+    method: post
+    uri: https://api.beta.shipwire.com/api/v3/returns
+    body:
+      encoding: UTF-8
+      string: '{"externalId":"R961429238","originalOrder":{"id":"92468844"},"items":[{"sku":"F002-14","quantity":1}],"options":{"generatePrepaidLabel":1,"emailCustomer":1,"warehouseId":10294,"warehouseExternalId":null,"warehouseRegion":""}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 10 May 2017 13:09:14 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - PHPSESSID=4vqqiikjoqmhmalibupuiiaka3; path=/; domain=.shipwire.com
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Process-Time-Seconds:
+      - '3.909382'
+      X-Request-Id:
+      - b571cfc325fa4f9f46d218a66d426ec5
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '549'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns?offset=0&limit=20","resource":{"offset":0,"total":1,"previous":null,"next":null,"items":[{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857","resource":{"options":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseRegion":"TEST1"}},"externalId":"R961429238","orderNo":null,"id":92468857,"transactionId":"1494421754","expectedDate":"2017-05-10T06:09:14-07:00","commerceName":null,"lastUpdatedDate":"2017-05-10T06:09:14-07:00","status":"processed","vendorId":null,"vendorExternalId":null,"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/items?offset=0&limit=20"},"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/holds?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/trackings?offset=0&limit=20"},"labels":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/labels?offset=0&limit=20"},"routing":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseName":"Test","originLongitude":42.4081,"originLatitude":-83.0583,"warehouseRegion":"TEST1"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-05-10T06:09:14-07:00","pickedUpDate":null,"submittedDate":null,"processedDate":"2017-05-10T06:09:14-07:00","completedDate":null,"expectedDate":"2017-05-10T06:09:14-07:00","deliveredDate":null,"cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":null}},"documents":null,"originalOrder":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844"}}}]}}'
+    http_version: 
+  recorded_at: Wed, 10 May 2017 13:09:18 GMT
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/returns/92468857
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 10 May 2017 13:09:19 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.150932'
+      X-Request-Id:
+      - 0a48f25bbe571f59a7d60f8495297977
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '510'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857","resource":{"options":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseRegion":"TEST1"}},"externalId":"R961429238","orderNo":null,"id":92468857,"transactionId":"1494421754","expectedDate":"2017-05-10T06:09:14-07:00","commerceName":null,"lastUpdatedDate":"2017-05-10T06:09:14-07:00","status":"processed","vendorId":null,"vendorExternalId":null,"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/items?offset=0&limit=20"},"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/holds?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/trackings?offset=0&limit=20"},"labels":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns\/92468857\/labels?offset=0&limit=20"},"routing":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseName":"Test","originLongitude":42.4081,"originLatitude":-83.0583,"warehouseRegion":"TEST1"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-05-10T06:09:14-07:00","pickedUpDate":null,"submittedDate":null,"processedDate":"2017-05-10T06:09:14-07:00","completedDate":null,"expectedDate":"2017-05-10T06:09:14-07:00","deliveredDate":null,"cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":null}},"documents":null,"originalOrder":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92468844"}}}'
+    http_version: 
+  recorded_at: Wed, 10 May 2017 13:09:19 GMT
+recorded_with: VCR 3.0.3

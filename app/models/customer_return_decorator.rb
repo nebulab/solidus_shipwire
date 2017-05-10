@@ -26,13 +26,15 @@ module SolidusShipwire::CustomerReturn
   private
 
   def create_on_shipwire?
-    shipwire_order
+    shipwire_order.present?
   end
 
   def process_shipwire_return!
-    create_on_shipwire
+  create_on_shipwire
   rescue SolidusShipwire::ResponseException => e
-    errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
+    if e.response.validation_errors
+      errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
+    end
   end
 
   def to_shipwire_object(hash)
@@ -71,10 +73,6 @@ module SolidusShipwire::CustomerReturn
       response = order.find_on_shipwire(order.shipwire_id)
       response.ok? ? response.body.with_indifferent_access : nil
     end
-  end
-
-  def order
-    return_items.first.inventory_unit.order
   end
 
   def shipwire_instance
