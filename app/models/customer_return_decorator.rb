@@ -8,7 +8,6 @@ module SolidusShipwire
 
     def to_shipwire
       {
-        externalId: order.number,
         originalOrder: {
           id: order.shipwire_id
         },
@@ -33,9 +32,8 @@ module SolidusShipwire
     def process_shipwire_return!
       create_on_shipwire
     rescue SolidusShipwire::ResponseException => e
-      if e.response.validation_errors
-        errors.add(:shipwire, "Shipwire: #{e.response.validation_errors.first['message']}")
-      end
+      error = e.response.validation_errors.any? ? e.response.validation_errors.first['message'] : 'Connection Timeout'
+      errors.add(:shipwire, "Shipwire: #{error}")
     end
 
     def to_shipwire_object(hash)
