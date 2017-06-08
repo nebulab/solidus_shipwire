@@ -1,15 +1,15 @@
 module SolidusShipwire
   module ShipwireCustomerReturnsController
     def self.prepended(base)
-      base.after_action :shipwire, only: [:create]
+      base.after_action :flash_message, only: [:create]
     end
 
     private
 
-    def shipwire
-      if @customer_return.errors.messages[:shipwire]
-        flash[:error] = @customer_return.errors.messages[:shipwire]
-      end
+    def flash_message
+      message = @customer_return.errors.messages[:shipwire]
+      return unless message
+      flash[:error] = message
     end
   end
 end
