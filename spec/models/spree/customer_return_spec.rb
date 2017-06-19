@@ -37,7 +37,7 @@ describe Spree::CustomerReturn, type: :model do
 
         it 'add an error message' do
           customer_return.save!
-          expect(customer_return.errors.messages).to have_key(:shipwire)
+          expect(customer_return.errors.messages).to have_key(:shipwire_unprocessed)
         end
       end
 
@@ -57,7 +57,7 @@ describe Spree::CustomerReturn, type: :model do
 
         it 'add an error message' do
           customer_return.save!
-          expect(customer_return.errors.messages).to have_key(:shipwire)
+          expect(customer_return.errors.messages).to have_key(:shipwire_already_reported)
         end
       end
     end
@@ -105,6 +105,53 @@ describe Spree::CustomerReturn, type: :model do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
           customer_return.save!
           expect(customer_return.shipwire_id).not_to be nil
+        end
+      end
+    end
+
+    context 'when generic errors occurs',
+            vcr: { cassette_name: 'spree/customer_return_generic_error' } do
+
+      let(:customer_return) { build(:customer_return) }
+      let(:inventory_unit)  { build(:inventory_unit, variant: variant_1) }
+      let(:return_item)     { build(:return_item, inventory_unit: inventory_unit) }
+      let(:shipwire_id)     { shipped_order_single_return_item }
+      let(:return_items)    { [return_item] }
+
+      before do
+        customer_return.return_items = return_items
+        customer_return.order.update_attribute(:shipwire_id, shipwire_id)
+      end
+
+      context 'when the response has 500 status code with included Something went wrong message' do
+        it 'add a generic error' do
+          customer_return.save!
+          expect(customer_return.errors.messages).to have_key(:shipwire_something_went_wrong)
+        end
+      end
+
+      context 'when timeout occurs' do
+        let(:request) { Shipwire::Request.new }
+
+        before  {
+          allow(request).to receive(:build_connection)
+
+          allow(Shipwire::Request)
+            .to receive(:new)
+            .with(hash_including(method: :post))
+            .and_return(request)
+
+          allow(Shipwire::Request)
+            .to receive(:new)
+            .with(hash_including(method: :get))
+            .and_call_original
+
+          allow(request).to receive(:make_request).and_raise(Faraday::TimeoutError)
+        }
+
+        it 'add a timeout error' do
+          customer_return.save!
+          expect(customer_return.errors.messages).to have_key(:shipwire_timeout)
         end
       end
     end

@@ -32,8 +32,27 @@ module SolidusShipwire
     def process_shipwire_return!
       create_on_shipwire
     rescue SolidusShipwire::ResponseException => e
-      error = e.response.validation_errors.any? ? e.response.validation_errors.first['message'] : 'Connection Timeout'
-      errors.add(:shipwire, "Shipwire: #{error}")
+      if e.response.has_error_summary?
+        if e.response.error_summary.include?("Something went wrong")
+          errors.add(:shipwire_something_went_wrong, e.response.error_summary)
+        else
+          errors.add(error_keys.key(e.response.error_summary), e.response.error_summary)
+        end
+      elsif e.response.has_validation_errors?
+        e.response.validation_errors.each do |error|
+          errors.add(error_keys.key(error['message']), error['message'])
+        end
+      end
+    end
+
+    def error_keys
+      {
+        shipwire_unprocessed:          "Only orders that are \"processed\" and not \"cancelled\" can be returned",
+        shipwire_already_reported:     "You have already reported this issue.",
+        shipwire_connection_failed:    "Unable to connect to Shipwire",
+        shipwire_timeout:              "Shipwire connection timeout",
+        shipwire_something_went_wrong: "Something went wrong"
+      }
     end
 
     def to_shipwire_object(hash)
