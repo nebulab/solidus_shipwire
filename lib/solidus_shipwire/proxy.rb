@@ -36,8 +36,17 @@ module SolidusShipwire
     def create_on_shipwire
       response = shipwire_instance.create(to_shipwire)
       raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
-      update_column(:shipwire_id, response.body['resource']['items'].first['resource']['id'])
-      find_on_shipwire(response.body['resource']['items'].first['resource']['id'])
+      shipwire_id = response.body['resource']['items'].first['resource']['id']
+      update_shipwire_id(shipwire_id)
+      find_on_shipwire(shipwire_id)
+    end
+
+    def update_shipwire_id(shipwire_id)
+      if persisted?
+        update_column(:shipwire_id, shipwire_id)
+      else
+        self.shipwire_id = shipwire_id
+      end
     end
   end
 end

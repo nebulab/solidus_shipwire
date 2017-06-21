@@ -32,12 +32,15 @@ describe Spree::CustomerReturn, type: :model do
 
         it 'post to shipwire' do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
-          customer_return.save!
+
+          customer_return.save
         end
 
         it 'add an error message' do
-          customer_return.save!
+          customer_return.save
+
           expect(customer_return.errors.messages).to have_key(:shipwire_unprocessed)
+          expect(customer_return.errors.messages[:shipwire_unprocessed].first).to eq("Only orders that are \"processed\" and not \"cancelled\" can be returned")
         end
       end
 
@@ -56,8 +59,10 @@ describe Spree::CustomerReturn, type: :model do
         end
 
         it 'add an error message' do
-          customer_return.save!
+          customer_return.save
+
           expect(customer_return.errors.messages).to have_key(:shipwire_already_reported)
+          expect(customer_return.errors.messages[:shipwire_already_reported].first).to eq("You have already reported this issue.")
         end
       end
     end
@@ -79,7 +84,7 @@ describe Spree::CustomerReturn, type: :model do
 
         it 'post to shipwire' do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
-          customer_return.save!
+          customer_return.save
           expect(customer_return.shipwire_id).not_to be nil
         end
       end
@@ -103,7 +108,7 @@ describe Spree::CustomerReturn, type: :model do
 
         it 'post to shipwire' do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
-          customer_return.save!
+          customer_return.save
           expect(customer_return.shipwire_id).not_to be nil
         end
       end
@@ -125,7 +130,7 @@ describe Spree::CustomerReturn, type: :model do
 
       context 'when the response has 500 status code with included Something went wrong message' do
         it 'add a generic error' do
-          customer_return.save!
+          customer_return.save
           expect(customer_return.errors.messages).to have_key(:shipwire_something_went_wrong)
         end
       end
@@ -150,7 +155,7 @@ describe Spree::CustomerReturn, type: :model do
         }
 
         it 'add a timeout error' do
-          customer_return.save!
+          customer_return.save
           expect(customer_return.errors.messages).to have_key(:shipwire_timeout)
         end
       end

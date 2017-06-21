@@ -3,7 +3,7 @@ module SolidusShipwire
     prepend SolidusShipwire::Proxy
 
     def self.prepended(base)
-      base.after_save :process_shipwire_return!, if: :create_on_shipwire?
+      base.after_validation :process_shipwire_return!, if: :create_on_shipwire?
     end
 
     def to_shipwire
@@ -35,7 +35,6 @@ module SolidusShipwire
       shipwire_errors = Shipwire::ReturnError.build_from_response(e.response)
       shipwire_errors.each { |error| errors.add(error.key, error.message) }
     end
-
 
     def to_shipwire_object(hash)
       SolidusShipwire::ShipwireObjects::Return.new(hash['id'], self, hash)

@@ -40,7 +40,7 @@ module Shipwire
       # There are multiple messages that contains this string, sometimes...
       return :shipwire_something_went_wrong if string.include?("Something went wrong")
 
-      ERROR_MESSAGES.key(string)? ERROR_MESSAGES.key(string) : :generic_error
+      ERROR_MESSAGES.key(string) || :generic_error
     end
   end
 end
