@@ -21,7 +21,7 @@ module Shipwire
       #   returns:
       #     errors:
       #       shipwire_unprocessed: "My custom message"
-      @message = I18n.t(@key, scope: [:shipwire, :returns, :errors], fallback: string)
+      @message = I18n.t(@key, scope: [:shipwire, :returns, :errors], default: string)
     end
 
     def self.build_from_response(response)
@@ -40,7 +40,7 @@ module Shipwire
       # There are multiple messages that contains this string, sometimes...
       return :shipwire_something_went_wrong if string.include?("Something went wrong")
 
-      ERROR_MESSAGES.key(string)
+      ERROR_MESSAGES.key(string)? ERROR_MESSAGES.key(string) : :generic_error
     end
   end
 end
