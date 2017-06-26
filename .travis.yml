@@ -4,6 +4,9 @@ language: ruby
 notifications:
   email:
     - danielepalombo@nebulab.it
+branches:
+  only:
+    - master
 language: ruby
 rvm:
   - 2.3.1
