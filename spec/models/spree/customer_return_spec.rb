@@ -1,6 +1,6 @@
 describe Spree::CustomerReturn, type: :model do
-  let(:shipwire_ids)  { YAML.load_file(file_fixture("shipwire_order_ids.yml")) }
-  let(:variant_skus)  { YAML.load_file(file_fixture("shipwire_variant_skus.yml")) }
+  let(:shipwire_ids) { YAML.load_file(file_fixture('shipwire_order_ids.yml')) }
+  let(:variant_skus) { YAML.load_file(file_fixture('shipwire_variant_skus.yml')) }
 
   # An order on Shipwire in pending state
   let(:pending_order) { shipwire_ids['pending_order'] }
@@ -9,14 +9,14 @@ describe Spree::CustomerReturn, type: :model do
   # An order on Shipwire in shipped state (contains 2*variant_1 and 2*variant_2)
   let(:shipped_order_multiple_return_items) { shipwire_ids['shipped_order_multiple_return_items'] }
   # An order on Shipwire that was already been reported)
-  let(:already_returned_order)  { shipwire_ids['already_returned_order'] }
+  let(:already_returned_order) { shipwire_ids['already_returned_order'] }
 
   let(:variant_1) { build(:variant, sku: variant_skus['sku_1']) }
   let(:variant_2) { build(:variant, sku: variant_skus['sku_2']) }
 
   context 'when posting a return to shipwire' do
-    context "when shipwire does not accept the return" do
-      context "when a shipwire order is in a not returnable state (Only orders that are processed and not cancelled can be returned)",
+    context 'when shipwire does not accept the return' do
+      context 'when a shipwire order is in a not returnable state (Only orders that are processed and not cancelled can be returned)',
               vcr: { cassette_name: 'spree/customer_return_not_returnable' } do
 
         let(:customer_return) { build(:customer_return) }
@@ -62,12 +62,12 @@ describe Spree::CustomerReturn, type: :model do
           customer_return.save
 
           expect(customer_return.errors.messages).to have_key(:shipwire_already_reported)
-          expect(customer_return.errors.messages[:shipwire_already_reported].first).to eq("You have already reported this issue.")
+          expect(customer_return.errors.messages[:shipwire_already_reported].first).to eq('You have already reported this issue.')
         end
       end
     end
 
-    context "when shipwire does accept the return" do
+    context 'when shipwire does accept the return' do
       context 'when return has 1 return item',
               vcr: { cassette_name: 'spree/customer_return_create_entity_single_return_item' } do
 
@@ -138,7 +138,7 @@ describe Spree::CustomerReturn, type: :model do
       context 'when timeout occurs' do
         let(:request) { Shipwire::Request.new }
 
-        before  {
+        before do
           allow(request).to receive(:build_connection)
 
           allow(Shipwire::Request)
@@ -152,7 +152,7 @@ describe Spree::CustomerReturn, type: :model do
             .and_call_original
 
           allow(request).to receive(:make_request).and_raise(Faraday::TimeoutError)
-        }
+        end
 
         it 'add a timeout error' do
           customer_return.save
