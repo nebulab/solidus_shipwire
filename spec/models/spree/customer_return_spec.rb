@@ -76,6 +76,7 @@ describe Spree::CustomerReturn, type: :model do
         let(:return_item)     { build(:return_item, inventory_unit: inventory_unit) }
         let(:shipwire_id)     { shipped_order_single_return_item }
         let(:return_items)    { [return_item] }
+        let(:items_array)     { [{ sku: variant_1.sku, quantity: 1 }] }
 
         before do
           customer_return.return_items = return_items
@@ -86,6 +87,10 @@ describe Spree::CustomerReturn, type: :model do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
           customer_return.save
           expect(customer_return.shipwire_id).not_to be nil
+        end
+
+        it 'places a single item in the return' do
+          expect(customer_return.to_shipwire[:items]).to eq items_array
         end
       end
 
@@ -100,6 +105,7 @@ describe Spree::CustomerReturn, type: :model do
         let(:return_item_3) { build(:return_item, inventory_unit: inventory_unit_2) }
         let(:shipwire_id)   { shipped_order_multiple_return_items }
         let(:return_items)  { [return_item_1, return_item_2, return_item_3] }
+        let(:items_array)   { [{ sku: variant_1.sku, quantity: 1 }, { sku: variant_2.sku, quantity: 2 }] }
 
         before do
           customer_return.return_items = return_items
@@ -110,6 +116,10 @@ describe Spree::CustomerReturn, type: :model do
           expect(customer_return).to receive(:process_shipwire_return!).and_call_original
           customer_return.save
           expect(customer_return.shipwire_id).not_to be nil
+        end
+
+        it 'places multiple items in the return' do
+          expect(customer_return.to_shipwire[:items]).to eq items_array
         end
       end
     end
