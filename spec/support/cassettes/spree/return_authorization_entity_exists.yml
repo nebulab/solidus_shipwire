@@ -1,6 +1,60 @@
 ---
 http_interactions:
 - request:
+    method: put
+    uri: https://api.beta.shipwire.com/api/v3/orders/92511208
+    body:
+      encoding: UTF-8
+      string: '{"orderId":1,"orderNo":"R795480473","options":{"currency":"USD","canSplit":1,"hold":0,"server":"Production"},"items":[],"shipTo":{"name":"John
+        ","company":"Company","address1":"A Different Road","address2":"Northwest","city":"Herndon","state":null,"postalCode":"07835-1693","country":"US","phone":"555-555-0199","email":"nelson.buckridge@leschgrimes.name"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Wed, 26 Jul 2017 10:36:25 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '0.182008'
+      X-Request-Id:
+      - 62dd0213bf36453bf69d3fdfe87154b7
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '1229'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":422,"message":"Invalid data","errors":[{"type":"error","code":"orderSubmitFailed","message":"Order
+        is either processed or cancelled and cannot be updated","orderNo":"R701547756","externalId":null,"id":92511208}],"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208","resource":{"externalId":null,"orderNo":"R701547756","commerceName":"Shipwire","processAfterDate":null,"lastUpdatedDate":"2017-06-05T06:51:50-07:00","status":"completed","vendorId":null,"vendorExternalId":null,"purchaseOrderId":null,"purchaseOrderExternalId":null,"purchaseOrderNo":null,"id":92511208,"transactionId":"1496670309-560024-1","needsReview":0,"vendorName":null,"holds":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/holds?offset=0&limit=20"},"items":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/items?offset=0&limit=20"},"trackings":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/trackings?offset=0&limit=20"},"returns":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/returns?offset=0&limit=20"},"options":{"resourceLocation":null,"resource":{"warehouseId":10294,"physicalWarehouseId":null,"warehouseExternalId":null,"warehouseRegion":"TEST1","warehouseArea":null,"serviceLevelCode":null,"carrierCode":"USPS
+        PM","thirdPartyCarrierCodeRequested":null,"billingType":null,"carrierId":null,"carrierAccountNumber":null,"sameDay":"NOT
+        REQUESTED","forceDuplicate":0,"forceAddress":0,"testOrder":0,"channelName":null,"localizationCode":null,"forceOverPack":null,"referrer":"","clearPreferenceHolds":null,"lastManualEditDate":null,"carrierType":null}},"shipFrom":{"resourceLocation":null,"resource":{"company":"Beta
+        Shipwire"}},"shipTo":{"resourceLocation":null,"resource":{"email":"spree@example.com","name":"Paolo
+        Tatone","company":null,"address1":"12311 185TH AVE SE","address2":null,"address3":null,"city":"BIG
+        LAKE","state":"MN","postalCode":"55309","country":"US","phone":"2312312321","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/commercialInvoice"},"packingList":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/packingList"},"shippingLabel":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/shippingLabel"},"routing":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseName":"Test","physicalWarehouseId":null,"originLongitude":42.4081,"originLatitude":-83.0583,"destinationLongitude":"-93.7399","destinationLatitude":"45.3506"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-06-05T06:45:09-07:00","pickedUpDate":null,"submittedDate":"2017-06-05T06:51:49-07:00","processedDate":"2017-06-05T06:51:49-07:00","completedDate":"2017-06-05T06:51:50-07:00","expectedSubmittedDate":"2017-06-05T06:51:49-07:00","expectedCompletedDate":"2017-06-05T06:51:50-07:00","expectedDate":"2017-06-08T00:00:00-07:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":null}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":"Waiting
+        Review"}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":9.19,"insurance":0,"shipping":9.19,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/pieces?offset=0&limit=20"},"extendedAttributes":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/extendedAttributes?offset=0&limit=20"}}}'
+    http_version:
+  recorded_at: Wed, 26 Jul 2017 10:36:25 GMT
+- request:
     method: get
     uri: https://api.beta.shipwire.com/api/v3/orders/92511208
     body:
@@ -21,13 +75,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 Jun 2017 13:55:40 GMT
+      - Wed, 26 Jul 2017 10:36:26 GMT
       Server:
       - Apache
       X-Process-Time-Seconds:
-      - '0.153331'
+      - '0.199207'
       X-Request-Id:
-      - 78ffc2f01af96c67e3dda6b9786e197e
+      - fd27b3240c8475bb111baf1462360617
       Vary:
       - Accept-Encoding
       Strict-Transport-Security:
@@ -48,8 +102,8 @@ http_interactions:
         Tatone","company":null,"address1":"12311 185TH AVE SE","address2":null,"address3":null,"city":"BIG
         LAKE","state":"MN","postalCode":"55309","country":"US","phone":"2312312321","isCommercial":0,"isPoBox":0}},"commercialInvoice":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/commercialInvoice"},"packingList":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/packingList"},"shippingLabel":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/shippingLabel"},"routing":{"resourceLocation":null,"resource":{"warehouseId":10294,"warehouseExternalId":null,"warehouseName":"Test","physicalWarehouseId":null,"originLongitude":42.4081,"originLatitude":-83.0583,"destinationLongitude":"-93.7399","destinationLatitude":"45.3506"}},"events":{"resourceLocation":null,"resource":{"createdDate":"2017-06-05T06:45:09-07:00","pickedUpDate":null,"submittedDate":"2017-06-05T06:51:49-07:00","processedDate":"2017-06-05T06:51:49-07:00","completedDate":"2017-06-05T06:51:50-07:00","expectedSubmittedDate":"2017-06-05T06:51:49-07:00","expectedCompletedDate":"2017-06-05T06:51:50-07:00","expectedDate":"2017-06-08T00:00:00-07:00","cancelledDate":null,"returnedDate":null,"lastManualUpdateDate":null}},"pricing":{"resourceLocation":null,"resource":{"shipping":0,"packaging":0,"insurance":0,"handling":0,"total":0}},"shipwireAnywhere":{"resourceLocation":null,"resource":{"status":"Waiting
         Review"}},"pricingEstimate":{"resourceLocation":null,"resource":{"total":9.19,"insurance":0,"shipping":9.19,"packaging":0,"handling":0}},"freightSummary":{"resourceLocation":null,"resource":{"totalWeight":"0.00","weightUnit":null,"measurementType":null}},"splitOrders":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/splitOrders?offset=0&limit=20"},"pieces":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/pieces?offset=0&limit=20"},"extendedAttributes":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/orders\/92511208\/extendedAttributes?offset=0&limit=20"}}}'
-    http_version: 
-  recorded_at: Mon, 05 Jun 2017 13:55:41 GMT
+    http_version:
+  recorded_at: Wed, 26 Jul 2017 10:36:26 GMT
 - request:
     method: post
     uri: https://api.beta.shipwire.com/api/v3/returns
@@ -73,13 +127,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 Jun 2017 13:55:41 GMT
+      - Wed, 26 Jul 2017 10:36:29 GMT
       Server:
       - Apache
       X-Process-Time-Seconds:
-      - '0.127379'
+      - '0.164895'
       X-Request-Id:
-      - 3a34dfce163a6352e3f51b24a916d088
+      - 8a3f63684deef91d325e2d5851d5388f
       Vary:
       - Accept-Encoding
       Strict-Transport-Security:
@@ -95,6 +149,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":200,"message":"Successful","errors":[{"code":"returnSubmitFailed","id":92511208,"message":"You
         have already reported this issue.","type":"error"}],"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/returns?offset=0&limit=20","resource":{"offset":0,"total":0,"previous":null,"next":null,"items":[]}}'
-    http_version: 
-  recorded_at: Mon, 05 Jun 2017 13:55:42 GMT
+    http_version:
+  recorded_at: Wed, 26 Jul 2017 10:36:30 GMT
 recorded_with: VCR 3.0.3
