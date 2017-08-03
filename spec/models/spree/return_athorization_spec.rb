@@ -1,6 +1,6 @@
 describe Spree::ReturnAuthorization, type: :model do
-  let(:shipwire_ids) { YAML.load_file(file_fixture('shipwire_order_ids.yml')) }
-  let(:variant_skus) { YAML.load_file(file_fixture('shipwire_variant_skus.yml')) }
+  let(:shipwire_ids) { YAML.load_file(File.expand_path('../../../fixtures/files/shipwire_order_ids.yml', __FILE__)) }
+  let(:variant_skus) { YAML.load_file(File.expand_path('../../../fixtures/files/shipwire_variant_skus.yml', __FILE__)) }
 
   # An order on Shipwire in pending state
   let(:pending_order) { shipwire_ids['pending_order'] }
