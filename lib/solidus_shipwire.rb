@@ -1,5 +1,6 @@
 require 'solidus_core'
 require 'solidus_backend'
+require 'solidus_support'
 
 require 'shipwire'
 

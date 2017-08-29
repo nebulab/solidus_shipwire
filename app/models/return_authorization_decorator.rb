@@ -1,5 +1,5 @@
 module SolidusShipwire
-  module CustomerReturn
+  module ReturnAuthorization
     prepend SolidusShipwire::Proxy
 
     def self.prepended(base)
@@ -26,7 +26,7 @@ module SolidusShipwire
     private
 
     def create_on_shipwire?
-      shipwire_order.present?
+      order.shipped? && shipwire_order.present?
     end
 
     def process_shipwire_return!
@@ -80,4 +80,4 @@ module SolidusShipwire
   end
 end
 
-Spree::CustomerReturn.prepend SolidusShipwire::CustomerReturn
+Spree::ReturnAuthorization.prepend SolidusShipwire::ReturnAuthorization
