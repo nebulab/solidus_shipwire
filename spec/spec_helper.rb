@@ -19,6 +19,7 @@ Dir[Rails.root.join('spec/support/shared_examples/**/*.rb')].each { |f| require 
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
+require 'spree/testing_support/shipwire_factory'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -30,6 +31,8 @@ RSpec.configure do |config|
   # visit spree.admin_path
   # current_path.should eql(spree.products_path)
   config.include Spree::TestingSupport::UrlHelpers
+
+  config.include ShipwireFactory
 
   # == Mock Framework
   #
@@ -48,4 +51,3 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
-
