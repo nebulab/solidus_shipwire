@@ -11,6 +11,8 @@ language: ruby
 rvm:
   - 2.3.1
 env:
+  global:
+    - BUNDLE_SPECIFIC_PLATFORM="true bundle"
   matrix:
     - SOLIDUS_BRANCH=v1.0 DB=postgres
     - SOLIDUS_BRANCH=v1.1 DB=postgres
