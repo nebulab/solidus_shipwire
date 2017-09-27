@@ -1,6 +1,6 @@
 describe Spree::CustomerReturn, type: :model do
-  let(:shipwire_ids) { YAML.load_file(file_fixture('shipwire_order_ids.yml')) }
-  let(:variant_skus) { YAML.load_file(file_fixture('shipwire_variant_skus.yml')) }
+  let(:shipwire_ids) { YAML.load_file('spec/fixtures/files/shipwire_order_ids.yml') }
+  let(:variant_skus) { YAML.load_file('spec/fixtures/files/shipwire_variant_skus.yml') }
 
   # An order on Shipwire in pending state
   let(:pending_order) { shipwire_ids['pending_order'] }

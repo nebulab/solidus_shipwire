@@ -17,9 +17,11 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency %q<solidus_core>, ['< 3', '>= 1.0.6']
-  s.add_dependency %q<solidus_backend>, ['< 3', '>= 1.0.6']
-  s.add_dependency %q<shipwire>, '~> 2.0'
+  s.add_runtime_dependency 'solidus_core',    ['>= 1.0', '< 3']
+  s.add_runtime_dependency 'solidus_backend', ['>= 1.0', '< 3']
+  s.add_runtime_dependency 'shipwire', '~> 2.0'
+
+  s.add_runtime_dependency 'solidus_support'
 
   s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'ffaker'
