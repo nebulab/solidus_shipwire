@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'shipwire', '~> 2.0'
 
   s.add_runtime_dependency 'solidus_support'
+  s.add_runtime_dependency 'retriable'
 
   s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'ffaker'
@@ -29,5 +30,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'vcr', '~> 3.0'
   s.add_development_dependency 'webmock', '~> 2.1'
   s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'retriable'
 end
