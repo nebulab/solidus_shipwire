@@ -22,7 +22,6 @@ require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/shipwire_factory'
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
 
   # == URL Helpers
   #
