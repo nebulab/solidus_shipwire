@@ -1,6 +1,5 @@
 describe Spree::CustomerReturn, type: :model do
-  force_shipwire_anywhere_warehouse
-
+  let(:default_warehouse) { ShipwireFactory::Warehouse.new.default }
   let(:shipwire_product) { sw_product_factory.in_stock }
   let(:return_item)      { build(:return_item, inventory_unit: order.inventory_units.first) }
   let(:return_items)     { [return_item] }
@@ -9,6 +8,10 @@ describe Spree::CustomerReturn, type: :model do
 
   let(:variant) do
     product.master.tap { |master| master.update_attributes(shipwire_id: shipwire_product['id']) }
+  end
+
+  before do
+    Spree::ShipwireConfig.default_warehouse_id = default_warehouse['id']
   end
 
   describe "order in pending state",
