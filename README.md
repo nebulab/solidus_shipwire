@@ -45,7 +45,7 @@ Sync all variants to shipwire
 be rake solidus_shipwire:sync_variants
 ```
 
-If you already have your variants in shipwire, you can create variants with same 
+If you already have your variants in shipwire, you can create variants with same
 sku on solidus and run:
 
 ```
@@ -65,5 +65,10 @@ Be sure to bundle your dependencies and then create a dummy test app for the spe
     $ bundle
     $ bundle exec rake test_app
     $ bundle exec rspec spec
+
+To record new cassettes you have to use a shipwire beta environment.
+Put your credentials in spec/support/shipwire.rb . Don't forget to remove them
+before commit. Don't care about the security because they are filter (
+spec/support/tools.rb) .
 
 Copyright (c) 2016 [Daniele Palombo], released under the New BSD License
