@@ -13,6 +13,7 @@ require 'ffaker'
 
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
+require 'solidus_shipwire/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/shipwire_factory'
 
