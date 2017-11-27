@@ -47,11 +47,11 @@ module SolidusShipwire
     end
 
     def generate_prepaid_label
-      1
+      0
     end
 
     def email_customer
-      1
+      0
     end
 
     def warehouse_id
