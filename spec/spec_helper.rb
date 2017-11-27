@@ -11,18 +11,17 @@ end
 require 'rspec/rails'
 require 'ffaker'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
-Dir[Rails.root.join('spec/support/shared_examples/**/*.rb')].each { |f| require f }
-
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/shipwire_factory'
 
-RSpec.configure do |config|
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/shared_examples/**/*.rb')].each { |f| require f }
 
+RSpec.configure do |config|
   # == URL Helpers
   #
   # Allows access to Spree's routes in specs:
