@@ -69,6 +69,8 @@ module SolidusShipwire
     def shipwire_order
       return @shipwire_order if defined? @shipwire_order
       @shipwire_order = begin
+        return nil if order.nil? || order.shipwire_id.nil?
+
         response = order.find_on_shipwire(order.shipwire_id)
         response.ok? ? response.body.with_indifferent_access : nil
       end
