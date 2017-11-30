@@ -11,6 +11,7 @@ module SolidusShipwire::Order
       orderId: id,
       orderNo: number,
       options: {
+        warehouseId: warehouse_id,
         currency: shipwire_currency,
         canSplit: shipwire_can_split?,
         hold: shipwire_hold?,
@@ -57,6 +58,10 @@ module SolidusShipwire::Order
 
   def shipwire_instance
     Shipwire::Orders.new
+  end
+
+  def warehouse_id
+    Spree::ShipwireConfig.default_warehouse_id
   end
 end
 

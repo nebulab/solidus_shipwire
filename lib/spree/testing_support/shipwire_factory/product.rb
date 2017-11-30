@@ -6,19 +6,12 @@ module ShipwireFactory
       shipwire_product = Shipwire::Products.new.create(product_json)
       raise CreationErrorOnShipwire, shipwire_product.error_report unless shipwire_product.ok?
 
-      Shipwire::Stock.new.adjust(
-        sku: shipwire_product.body['resource']['items'].first['resource']['sku'],
-        quantity: 50,
-        warehouseId: warehouse['id'],
-        reason: 'Init for test'
-      )
-
       shipwire_product
     end
 
     def in_stock(params = {})
       search_params = { sku: 'product-in-stock', classification: 'baseProduct',
-                        status: 'instock', limit: 1 }.merge params
+                        limit: 1 }.merge params
 
       Retriable.retriable on: { MissingOnShipwire => nil },
                           on_retry: proc{ create_product_in_stock(search_params) } do
@@ -28,6 +21,13 @@ module ShipwireFactory
         products = shipwire_response.body['resource']['items']
 
         raise MissingOnShipwire if products.empty?
+
+        Shipwire::Stock.new.adjust(
+          sku: products.first['resource']['sku'],
+          quantity: 50,
+          warehouseId: warehouse['id'],
+          reason: 'Init for test'
+        )
 
         products.first['resource']
       end

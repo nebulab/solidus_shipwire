@@ -47,11 +47,11 @@ module SolidusShipwire
     end
 
     def generate_prepaid_label
-      1
+      0
     end
 
     def email_customer
-      1
+      0
     end
 
     def warehouse_id
@@ -69,6 +69,8 @@ module SolidusShipwire
     def shipwire_order
       return @shipwire_order if defined? @shipwire_order
       @shipwire_order = begin
+        return nil if order.nil? || order.shipwire_id.nil?
+
         response = order.find_on_shipwire(order.shipwire_id)
         response.ok? ? response.body.with_indifferent_access : nil
       end
