@@ -37,7 +37,7 @@ module SolidusShipwire
     end
 
     def to_shipwire_object(hash)
-      SolidusShipwire::ShipwireObjects::Return.new(hash['id'], self, hash)
+      SolidusShipwire::ShipwireObjects::ReturnAuthorization.new(hash['id'], self, hash)
     end
 
     def shipwire_return_items
@@ -83,4 +83,3 @@ module SolidusShipwire
     Spree::ReturnAuthorization.prepend self
   end
 end
-
