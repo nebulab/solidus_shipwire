@@ -5,6 +5,16 @@ module SolidusShipwire::Order
     base.after_save :update_on_shipwire, if: :update_on_shipwire?
   end
 
+  def finalize!
+    super
+
+    in_shipwire if add_on_shipwire_on_completion?
+  end
+
+  def add_on_shipwire_on_completion?
+    line_items_in_shipwire?
+  end
+
   def to_shipwire
     {
       orderId: id,
