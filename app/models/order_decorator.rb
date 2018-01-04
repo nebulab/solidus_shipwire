@@ -3,7 +3,6 @@ module SolidusShipwire::Order
 
   def self.prepended(base)
     base.after_save :update_on_shipwire, if: :update_on_shipwire?
-    base.state_machine.after_transition to: :complete, do: :in_shipwire, if: :line_items_in_shipwire?
   end
 
   def to_shipwire

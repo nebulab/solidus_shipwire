@@ -12,30 +12,12 @@ describe Spree::Order do
         variant.update_attribute(:shipwire_id, '229175')
       end
 
-      it 'run sync when completed' do
-        expect(order).to receive(:in_shipwire)
-
-        order.complete!
-      end
-
       context 'with specified shipwire_id' do
         before do
           order.update_attribute(:shipwire_id, '92297445')
         end
 
         it_behaves_like 'a shipwire object'
-      end
-    end
-
-    context 'without variant synced in shipwire' do
-      before do
-        variant = order.line_items.first.variant
-        variant.update_attribute(:shipwire_id, nil)
-      end
-      it 'run sync when completed' do
-        expect(order).to_not receive(:in_shipwire)
-
-        order.complete!
       end
     end
   end
