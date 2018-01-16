@@ -18,4 +18,6 @@ gem 'mysql2'
 gem 'sqlite3'
 gem 'pg'
 
+gem 'shipwire', github: 'nebulab/shipwire'
+
 gemspec

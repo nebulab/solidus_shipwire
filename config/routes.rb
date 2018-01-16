@@ -11,6 +11,10 @@ Spree::Core::Engine.routes.draw do
     end
   end
 
+  namespace :shipwire do
+    resources :rate, only: :create
+  end
+
   namespace :shipwire_webhooks do
     resources :stock, only: :create
 
