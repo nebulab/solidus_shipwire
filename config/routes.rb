@@ -9,6 +9,12 @@ Spree::Core::Engine.routes.draw do
         end
       end
     end
+
+    namespace :api, defaults: { format: 'json' } do
+      resources :shipments do
+        resources :rates, only: [:index], module: :shipwire
+      end
+    end
   end
 
   namespace :shipwire_webhooks do

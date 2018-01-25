@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.beta.shipwire.com/api/v3/products?classification=baseProduct&limit=1&sku=product-in-stock&status=instock
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Sep 2017 09:14:34 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '1.006467'
+      X-Request-Id:
+      - 4d0d6648fe8bd3c7d1c5fcb2e801d706
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '582'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products?classification=baseProduct&limit=1&sku=product-in-stock&status=instock&offset=0","resource":{"offset":0,"total":1,"previous":null,"next":null,"items":[{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/276038","resource":{"id":276038,"externalId":null,"sku":"product-in-stock","upc":null,"ean":null,"description":"description","hsCode":null,"countryOfOrigin":"US","htsCode":null,"eccn":null,"creationDate":"2017-09-26T03:10:18-07:00","archivedDate":null,"status":"instock","storageConfiguration":"INDIVIDUAL_ITEM","batteryConfiguration":"NOBATTERY","classification":"baseProduct","category":"FURNITURE_&_APPLIANCES","itemCount":1,"vendorId":null,"vendorExternalId":null,"dimensions":{"resourceLocation":null},"values":{"resourceLocation":null},"alternateNames":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/276038\/alternateNames?classification=baseProduct&limit=1&sku=product-in-stock&status=instock&offset=0"},"alternateDescriptions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/276038\/alternateDescriptions?classification=baseProduct&limit=1&sku=product-in-stock&status=instock&offset=0"},"extendedAttributes":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/276038\/extendedAttributes?classification=baseProduct&limit=1&sku=product-in-stock&status=instock&offset=0"},"technicalData":{"resourceLocation":null},"flags":{"resourceLocation":null},"enqueuedDimensions":{"resourceLocation":"https:\/\/api.beta.shipwire.com\/api\/v3\/products\/baseProducts\/276038\/enqueuedDimensions?classification=baseProduct&limit=1&sku=product-in-stock&status=instock&offset=0"},"innerPack":{"resourceLocation":null},"masterCase":{"resourceLocation":null},"pallet":{"resourceLocation":null}}}]}}'
+    http_version: 
+  recorded_at: Wed, 27 Sep 2017 09:14:36 GMT
+- request:
+    method: post
+    uri: https://api.beta.shipwire.com/api/v3/rate
+    body:
+      encoding: UTF-8
+      string: '{"order":{"shipTo":{"name":"John ","company":"Company","address1":"A
+        Different Road","address2":"Northwest","city":"Herndon","state":null,"postalCode":"00296","country":"US","phone":"555-555-0199","email":"jackeline.crooks@thompsondietrich.co.uk"},"items":[{"sku":"product-in-stock","quantity":1,"commercialInvoiceValue":"10.0","commercialInvoiceValueCurrency":"USD"}]},"options":{"currency":"USD","canSplit":1,"expectedShipDate":"2017-10-11T09:14:36+00:00"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Sep 2017 09:14:37 GMT
+      Server:
+      - Apache
+      X-Process-Time-Seconds:
+      - '2.981863'
+      X-Request-Id:
+      - 5247796a7a96f566d75d6f3f6d0d2487
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      P3p:
+      - policyref="/w3c/p3p.xml", CP="COM CNT INT NAV PUR STA UNI CAO DSP CUR o i
+        OUR IND"
+      Content-Length:
+      - '621'
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":200,"message":"Successful","warnings":[{"type":"warning","code":"addressVerification","message":"Could
+        not verify shipping address"}],"resourceLocation":null,"resource":{"groupBy":"all","rates":[{"serviceOptions":[{"serviceLevelCode":"GD","serviceLevelName":"Ground","shipments":[{"warehouseName":"Philadelphia","warehouseId":12,"warehouseExternalId":"1","carrier":{"code":"USPS
+        PMFPE","name":"USPS","description":"USPS Priority Mail Flat Rate Padded Envelope","properties":["trackable"]},"cost":{"currency":"USD","type":"total","name":"Total","amount":7.48,"converted":false,"originalCost":7.48,"originalCurrency":"USD"},"subtotals":[{"currency":"USD","type":"shipping","name":"Shipping","amount":7.48,"converted":false,"originalCost":7.48,"originalCurrency":"USD"},{"currency":"USD","type":"insurance","name":"Insurance","amount":0,"converted":false,"originalCost":0,"originalCurrency":"USD"},{"currency":"USD","type":"packaging","name":"Packaging","amount":0,"converted":false,"originalCost":0,"originalCurrency":"USD"},{"currency":"USD","type":"handling","name":"Handling","amount":0,"converted":false,"originalCost":0,"originalCurrency":"USD"}],"pieces":[{"length":{"amount":10.5,"units":"in"},"width":{"amount":7.5,"units":"in"},"height":{"amount":1,"units":"in"},"weight":{"amount":1.1,"units":"lbs","type":"total"},"subweights":[{"amount":0.1,"units":"lbs","type":"packaging"},{"amount":0,"units":"lbs","type":"voidFill"},{"amount":1,"units":"lbs","type":"products"}],"contents":[{"sku":"product-in-stock","quantity":1}]}],"expectedShipDate":"2017-10-11T00:00:00+00:00","expectedDeliveryMinDate":"2017-10-13T00:00:00+00:00","expectedDeliveryMaxDate":"2017-10-16T00:00:00+00:00"}]}]}]}}'
+    http_version: 
+  recorded_at: Wed, 27 Sep 2017 09:14:40 GMT
+recorded_with: VCR 3.0.3
