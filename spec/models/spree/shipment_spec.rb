@@ -15,6 +15,14 @@ describe Spree::Shipment, type: :model do
       subject
     end
 
+    context "process_after_date is set" do
+      it "returns processAfterDate" do
+        allow(shipment).to receive(:process_after_date) { "2018-01-01T12:00:00+01:00" }
+
+        expect(subject).to include processAfterDate: "2018-01-01T12:00:00+01:00"
+      end
+    end
+
     context "contains only inventory units eligible_for_shipwire" do
       let(:variant_not_on_shipwire) { create(:variant) }
 

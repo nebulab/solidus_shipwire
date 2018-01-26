@@ -6,6 +6,7 @@ module SolidusShipwire
       {
         orderId: id,
         orderNo: number,
+        processAfterDate: process_after_date,
         options: {
           warehouseId: warehouse_id,
           currency: shipwire_currency,
@@ -46,6 +47,10 @@ module SolidusShipwire
 
     def shipwire_server
       'Production'
+    end
+
+    def process_after_date
+      nil
     end
 
     private
