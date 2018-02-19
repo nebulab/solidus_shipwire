@@ -55,10 +55,14 @@ namespace :solidus_shipwire do
           }
         )
 
-        next if stock_item.nil?
+        if stock_item.nil?
+          print 'n'
+          next
+        end
 
         results[:update_stock][stock_item.variant.sku] = shipwire_stock['resource']['good']
-        stock_item.update_attribute(:count_on_hand, shipwire_stock['resource']['good'])
+        stock_item.set_count_on_hand(shipwire_stock['resource']['good'])
+        print '.'
       end
 
       page += 1
