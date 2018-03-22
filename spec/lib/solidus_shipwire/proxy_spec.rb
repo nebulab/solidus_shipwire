@@ -25,4 +25,24 @@ describe SolidusShipwire::Proxy do
       it { expect{ subject }.not_to raise_error }
     end
   end
+
+  describe "#shipwire_instance" do
+    subject { dummy_instance.shipwire_instance }
+
+    it_behaves_like "is not overrided"
+
+    context "when shipwire_instance is overrided" do
+      let(:dummy_class) do
+        Class.new do
+          prepend SolidusShipwire::Proxy
+
+          def shipwire_instance
+            true
+          end
+        end
+      end
+
+      it { expect{ subject }.not_to raise_error }
+    end
+  end
 end
