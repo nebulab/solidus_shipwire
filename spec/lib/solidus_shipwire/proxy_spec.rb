@@ -176,4 +176,21 @@ describe SolidusShipwire::Proxy do
       end
     end
   end
+
+  describe "#update_on_shipwire" do
+    subject { dummy_instance.update_on_shipwire }
+
+    let(:shipwire_json_data) { { "" => "shipwire_json_data" } }
+
+    before do
+      expect(dummy_instance).to receive(:shipwire_id) { shipwire_id }
+      expect(dummy_instance).to receive(:to_shipwire) { shipwire_json_data }
+      expect(shipwire_instance_api).to receive(:update)
+        .with(shipwire_id, shipwire_json_data)
+        .and_return(Shipwire::Response.new)
+      expect(dummy_instance).to receive(:shipwire_instance) { shipwire_instance_api }
+    end
+
+    it { is_expected.to be_a Shipwire::Response }
+  end
 end
