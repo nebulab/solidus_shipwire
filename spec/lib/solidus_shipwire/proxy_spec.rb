@@ -5,6 +5,7 @@ end
 describe SolidusShipwire::Proxy do
   let(:dummy_class)           { Class.new { prepend SolidusShipwire::Proxy } }
   let(:dummy_instance)        { dummy_class.new }
+  let(:shipwire_response)     { Shipwire::Response.new }
   let(:shipwire_id)           { '123456' }
   let(:shipwire_instance_api) { double('shipwire api instance', find: shipwire_response) }
 
@@ -77,6 +78,44 @@ describe SolidusShipwire::Proxy do
         expect(dummy_instance).to receive(:shipwire_id=).with(shipwire_id)
         subject
       end
+    end
+  end
+
+  describe "#create_on_shipwire" do
+    before do
+      expect(dummy_instance).to receive(:to_shipwire) { {} }
+      expect(dummy_instance).to receive(:shipwire_instance) do
+        double('shipwire api instance', create: shipwire_response)
+      end
+    end
+
+    subject { dummy_instance.create_on_shipwire }
+
+    context "when is not successful on shipwire" do
+      let(:shipwire_response) do
+        instance_double("Shipwire::Response", ok?: false, error_report: "error")
+      end
+
+      it { expect{ subject }.to raise_error(SolidusShipwire::ResponseException) }
+    end
+
+    context "when is successful on shipwire" do
+      let(:response_body) do
+        { "resource" => { "items" => [{ "resource" => { "id" => shipwire_id } }] } }
+      end
+
+      let(:shipwire_response) do
+        instance_double("Shipwire::Response", ok?: true, body: response_body)
+      end
+
+      before do
+        expect(dummy_instance).to receive(:update_shipwire_id).with(shipwire_id)
+        expect(dummy_instance).to receive(:find_on_shipwire)
+          .with(shipwire_id)
+          .and_return(Shipwire::Response.new)
+      end
+
+      it { is_expected.to be_a Shipwire::Response }
     end
   end
 end
