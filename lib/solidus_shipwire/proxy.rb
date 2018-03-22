@@ -33,6 +33,12 @@ module SolidusShipwire
       raise 'override shipwire_instance'
     end
 
+    def to_shipwire_object(params)
+      super
+    rescue NameError
+      raise NameError, 'override to_shipwire_object'
+    end
+
     def create_on_shipwire
       response = shipwire_instance.create(to_shipwire)
       raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
