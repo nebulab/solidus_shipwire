@@ -118,4 +118,62 @@ describe SolidusShipwire::Proxy do
       it { is_expected.to be_a Shipwire::Response }
     end
   end
+
+  describe "#find_or_create_on_shipwire_api" do
+    let(:body_response) { { "resource" => "shipwire data" } }
+
+    let(:shipwire_response) do
+      instance_double("Shipwire::Response", ok?: success, body: body_response)
+    end
+
+    subject { dummy_instance.find_or_create_on_shipwire_api(shipwire_id) }
+
+    before do
+      expect(dummy_instance).to receive(:find_on_shipwire)
+        .with(shipwire_id)
+        .and_return(shipwire_response)
+    end
+
+    context "object exists on shipwire" do
+      let(:success) { false }
+
+      before do
+        expect(dummy_instance).to receive(:create_on_shipwire)
+          .with(no_args)
+          .and_return(shipwire_response)
+      end
+
+      context "when to_shipwire_object" do
+        it_behaves_like "is not overrided"
+      end
+
+      context "when to_shipwire_object is overrided" do
+        before do
+          expect(dummy_instance).to receive(:to_shipwire_object)
+            .with("shipwire data")
+            .and_return("SolidusShipwire::ShipwireObjects::Instance")
+        end
+
+        it { is_expected.to eq "SolidusShipwire::ShipwireObjects::Instance" }
+      end
+    end
+
+    context "object doesn't exist on shipwire" do
+      let(:success) { true }
+
+      context "when to_shipwire_object" do
+        it_behaves_like "is not overrided"
+      end
+
+      context "when to_shipwire_object is overrided" do
+        before do
+          expect(dummy_instance).to receive(:to_shipwire_object)
+            .with("shipwire data")
+            .and_return("SolidusShipwire::ShipwireObjects::Instance")
+        end
+
+        it { is_expected.to eq "SolidusShipwire::ShipwireObjects::Instance" }
+      end
+    end
+  end
 end
