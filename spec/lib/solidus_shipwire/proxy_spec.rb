@@ -58,4 +58,25 @@ describe SolidusShipwire::Proxy do
 
     it { is_expected.to be_a Shipwire::Response }
   end
+
+  describe "#update_shipwire_id" do
+    subject { dummy_instance.update_shipwire_id(shipwire_id) }
+
+    context "when is persisted" do
+      it "update_column on database" do
+        expect(dummy_instance).to receive(:persisted?) { true }
+        expect(dummy_instance).to receive(:update_column).with(:shipwire_id, shipwire_id)
+        subject
+      end
+    end
+
+    context "when is not persisted" do
+      it "update shipwire id attribute" do
+        expect(dummy_instance).to receive(:persisted?) { false }
+        expect(dummy_instance).not_to receive(:update_column)
+        expect(dummy_instance).to receive(:shipwire_id=).with(shipwire_id)
+        subject
+      end
+    end
+  end
 end
