@@ -60,7 +60,7 @@ module SolidusShipwire
     end
 
     def shipwire_instance
-      Shipwire::Shipments.new
+      Shipwire::Orders.new
     end
 
     def warehouse_id

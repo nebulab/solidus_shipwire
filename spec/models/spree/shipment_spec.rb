@@ -42,4 +42,10 @@ describe Spree::Shipment, type: :model do
       end
     end
   end
+
+  describe "#shipwire_instance" do
+    subject { described_class.new.shipwire_instance }
+
+    it { is_expected.to be_a Shipwire::Orders }
+  end
 end
