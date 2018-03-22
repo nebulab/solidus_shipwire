@@ -193,4 +193,22 @@ describe SolidusShipwire::Proxy do
 
     it { is_expected.to be_a Shipwire::Response }
   end
+
+  describe "#in_shipwire" do
+    subject { dummy_instance.in_shipwire }
+
+    context "when shipwire_id is missed" do
+      it_behaves_like "is not overrided"
+    end
+
+    context "when shipwire_id is defined" do
+      before do
+        expect(dummy_instance).to receive(:find_or_create_on_shipwire_api)
+          .and_return "SolidusShipwire::ShipwireObjects::Instance"
+        expect(dummy_instance).to receive(:shipwire_id).and_return shipwire_id
+      end
+
+      it { is_expected.to eq "SolidusShipwire::ShipwireObjects::Instance" }
+    end
+  end
 end
