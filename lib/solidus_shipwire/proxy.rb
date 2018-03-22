@@ -29,8 +29,8 @@ module SolidusShipwire
 
     def shipwire_instance
       super
-    rescue NoMethodError
-      raise 'override shipwire_instance'
+    rescue NameError
+      raise NameError, 'override shipwire_instance'
     end
 
     def to_shipwire_object(params)
