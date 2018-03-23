@@ -5,8 +5,24 @@ shared_examples "shipwire api shipwireable" do
 
   %w(
     shipwire_api
+    find_on_shipwire
   ).each do |method|
     it { is_expected.to respond_to method }
+  end
+
+  describe ".find_on_shipwire" do
+    let(:shipwire_id)       { '1234567' }
+    let(:shipwire_response) { Shipwire::Response.new }
+
+    subject { described_class.find_on_shipwire(shipwire_id) }
+
+    it "calls find on shipwire_api" do
+      expect(described_class.shipwire_api).to receive(:find)
+        .with(shipwire_id)
+        .and_return(shipwire_response)
+
+      is_expected.to be_a Shipwire::Response
+    end
   end
 end
 

@@ -47,6 +47,10 @@ module SolidusShipwire
           def shipwire_api
             @shipwire_api
           end
+
+          def find_on_shipwire(shipwire_id)
+            shipwire_api.find(shipwire_id)
+          end
         end
       end
     end
