@@ -19,6 +19,8 @@ module SolidusShipwire
           true
         end
       end
+
+      include ShipwireApi
     end
   end
 end
