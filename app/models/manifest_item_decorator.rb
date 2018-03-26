@@ -1,14 +1,11 @@
 module SolidusShipwire
   module ManifestItem
-    def to_shipwire
-      {
-        sku: variant.sku,
-        quantity: quantity,
-        commercialInvoiceValue: line_item.price,
-        commercialInvoiceValueCurrency: 'USD'
-      }
+    def self.prepended(base)
+      base.include ActiveModel::Serialization
+      base.extend SolidusShipwire::Shipwireable
+      base.acts_as_shipwireable serializer: SolidusShipwire::ShippingManifest::ManifestItemSerializer
     end
+
+    Spree::ShippingManifest::ManifestItem.prepend self
   end
 end
-
-Spree::ShippingManifest::ManifestItem.prepend SolidusShipwire::ManifestItem
