@@ -60,15 +60,19 @@ end
 
 shared_examples "shipwire integrated object" do
   let(:shipwire_id)        { '1234567' }
+  let(:shipwire_json)      { {} }
   let(:shipwire_response)  { Shipwire::Response.new }
   let(:described_instance) { described_class.new }
 
   before do
     allow(described_instance).to receive(:shipwire_id).and_return(shipwire_id)
+    allow(described_instance).to receive(:to_shipwire_json)
+      .and_return(shipwire_json)
   end
 
   %w(
     find_on_shipwire
+    update_on_shipwire
   ).each do |method|
     it { is_expected.to respond_to method }
   end
@@ -79,6 +83,18 @@ shared_examples "shipwire integrated object" do
     it "calls find_on_shipwire on #{described_class}" do
       expect(described_class).to receive(:find_on_shipwire)
         .with(shipwire_id)
+        .and_return(shipwire_response)
+
+      is_expected.to be_a Shipwire::Response
+    end
+  end
+
+  describe "#update_on_shipwire" do
+    subject { described_instance.update_on_shipwire }
+
+    it "calls update_on_shipwire on #{described_class}" do
+      expect(described_class).to receive(:update_on_shipwire)
+        .with(shipwire_id, shipwire_json)
         .and_return(shipwire_response)
 
       is_expected.to be_a Shipwire::Response
