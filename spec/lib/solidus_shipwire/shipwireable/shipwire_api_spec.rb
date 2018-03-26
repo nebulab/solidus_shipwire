@@ -74,6 +74,7 @@ shared_examples "shipwire integrated object" do
     find_on_shipwire
     update_on_shipwire
     create_on_shipwire
+    find_or_create_on_shipwire
   ).each do |method|
     it { is_expected.to respond_to method }
   end
@@ -148,6 +149,36 @@ shared_examples "shipwire integrated object" do
           .with(shipwire_id)
           .and_return(shipwire_response)
         expect(described_instance).to receive(:update_shipwire_id).with(shipwire_id)
+      end
+    end
+  end
+
+  describe "#find_or_create_on_shipwire" do
+    let(:shipwire_response) { Shipwire::Response.new }
+
+    subject { described_instance.find_or_create_on_shipwire }
+
+    before do
+      expect(described_class).to receive(:find_on_shipwire)
+        .with(shipwire_id)
+        .and_return(shipwire_response)
+    end
+
+    context "when already exists on shipwire" do
+      before { expect(shipwire_response).to receive(:ok?) { true } }
+
+      it { is_expected.to be_a Shipwire::Response }
+    end
+
+    context "when is not found on shipwire" do
+      before { expect(shipwire_response).to receive(:ok?) { false } }
+
+      it "calls create_on_shipwire" do
+        expect(described_class).to receive(:create_on_shipwire)
+          .with(shipwire_json)
+          .and_return(Shipwire::Response.new)
+
+        is_expected.to be_a Shipwire::Response
       end
     end
   end
