@@ -41,6 +41,21 @@ shared_examples "shipwire api shipwireable" do
       is_expected.to be_a Shipwire::Response
     end
   end
+
+  describe ".create_on_shipwire" do
+    let(:shipwire_json)     { {} }
+    let(:shipwire_response) { Shipwire::Response.new }
+
+    subject { described_class.create_on_shipwire(shipwire_json) }
+
+    it "calls create on shipwire_api" do
+      expect(described_class.shipwire_api).to receive(:create)
+        .with(shipwire_json)
+        .and_return(shipwire_response)
+
+      is_expected.to be_a Shipwire::Response
+    end
+  end
 end
 
 describe SolidusShipwire::Shipwireable::ShipwireApi do

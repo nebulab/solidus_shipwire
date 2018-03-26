@@ -55,6 +55,10 @@ module SolidusShipwire
           def update_on_shipwire(shipwire_id, shipwire_json)
             shipwire_api.update(shipwire_id, shipwire_json)
           end
+
+          def create_on_shipwire(shipwire_json)
+            shipwire_api.create(shipwire_json)
+          end
         end
       end
     end
