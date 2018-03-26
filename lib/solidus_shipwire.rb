@@ -4,6 +4,7 @@ require 'solidus_support'
 require 'active_record'
 
 require 'shipwire'
+require 'active_model_serializers'
 
 require 'solidus_shipwire/engine'
 require 'solidus_shipwire/proxy'

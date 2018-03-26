@@ -20,6 +20,7 @@ module SolidusShipwire
         end
       end
 
+      include ShipwireSerializer
       include ShipwireApi
     end
   end
