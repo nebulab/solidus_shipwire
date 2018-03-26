@@ -60,6 +60,10 @@ module SolidusShipwire
             shipwire_api.create(shipwire_json)
           end
         end
+
+        def find_on_shipwire
+          self.class.find_on_shipwire(shipwire_id)
+        end
       end
     end
   end
