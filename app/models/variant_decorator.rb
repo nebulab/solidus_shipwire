@@ -1,6 +1,8 @@
 module SolidusShipwire
-  module Variant
-    prepend SolidusShipwire::Proxy
+  module VariantDecorator
+    def self.prepended(base)
+      base.acts_as_shipwireable api_class: Shipwire::Products
+    end
 
     def update_stocks_from_shipwire
       Shipwire::Stock.new.list( sku: self.sku)
@@ -30,17 +32,6 @@ module SolidusShipwire
         }
       }
     end
-
-    def to_shipwire_object(hash)
-      ShipwireObject.new(hash["id"], self, hash)
-    end
-
-    private
-
-    def shipwire_instance
-      Shipwire::Products.new
-    end
+    Spree::Variant.prepend self
   end
 end
-
-Spree::Variant.prepend SolidusShipwire::Variant
