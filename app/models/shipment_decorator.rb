@@ -1,6 +1,8 @@
 module SolidusShipwire
-  module Shipment
-    prepend SolidusShipwire::Proxy
+  module ShipmentDecorator
+    def self.prepended(base)
+      base.acts_as_shipwireable api_class: Shipwire::Orders
+    end
 
     def to_shipwire
       {
@@ -29,10 +31,6 @@ module SolidusShipwire
         items.map(&:to_shipwire)
     end
 
-    def to_shipwire_object(hash)
-      SolidusShipwire::ShipwireObjects::Shipment.new(hash['id'], self, hash)
-    end
-
     def shipwire_can_split?
       1
     end
@@ -59,14 +57,10 @@ module SolidusShipwire
       @shipwire_inventory_units = inventory_units.eligible_for_shipwire
     end
 
-    def shipwire_instance
-      Shipwire::Orders.new
-    end
-
     def warehouse_id
       Spree::ShipwireConfig.default_warehouse_id
     end
+
+    Spree::Shipment.prepend self
   end
 end
-
-Spree::Shipment.prepend SolidusShipwire::Shipment
