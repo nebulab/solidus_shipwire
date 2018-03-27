@@ -41,5 +41,13 @@ describe SolidusShipwire::ShipmentSerializer do
         shipTo: ship_to_json_node
       )
     end
+
+    context "no variants synced on shipwire" do
+      let(:variant) { create(:variant) }
+
+      it "items is empty" do
+        is_expected.to include(items: [])
+      end
+    end
   end
 end
