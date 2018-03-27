@@ -9,6 +9,18 @@ shared_examples "shipwireable api class" do
     it { is_expected.to respond_to method }
   end
 
+  describe "api_class #{described_class.shipwire_api.class} defines shipwire api methods" do
+    subject { described_class.shipwire_api }
+
+    %w(
+      find
+      create
+      update
+    ).each do |method|
+      it { is_expected.to respond_to method }
+    end
+  end
+
   describe ".find_on_shipwire" do
     let(:shipwire_id)       { '1234567' }
     let(:shipwire_response) { Shipwire::Response.new }
