@@ -41,6 +41,11 @@ shared_examples "shipwireable api instance" do
 
       is_expected.to be_a Shipwire::Response
     end
+
+    context "when shipwire_id is nil" do
+      let(:shipwire_id) { nil }
+      it { expect{ subject }.to raise_error(RuntimeError) }
+    end
   end
 
   describe "#update_shipwire_id" do

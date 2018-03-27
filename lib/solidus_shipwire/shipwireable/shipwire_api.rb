@@ -66,6 +66,8 @@ module SolidusShipwire
         end
 
         def update_on_shipwire
+          raise "shipwire id is nil" if shipwire_id.nil?
+
           self.class.update_on_shipwire(shipwire_id, to_shipwire_json)
         end
 
