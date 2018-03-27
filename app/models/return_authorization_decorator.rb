@@ -1,8 +1,7 @@
 module SolidusShipwire
-  module ReturnAuthorization
-    prepend SolidusShipwire::Proxy
-
+  module ReturnAuthorizationDecorator
     def self.prepended(base)
+      base.acts_as_shipwireable api_class: Shipwire::Returns
       base.after_validation :process_shipwire_return!, if: :create_on_shipwire?
     end
 
@@ -34,10 +33,6 @@ module SolidusShipwire
     rescue SolidusShipwire::ResponseException => e
       shipwire_errors = Shipwire::ReturnError.build_from_response(e.response)
       shipwire_errors.each { |error| errors.add(error.key, error.message) }
-    end
-
-    def to_shipwire_object(hash)
-      SolidusShipwire::ShipwireObjects::ReturnAuthorization.new(hash['id'], self, hash)
     end
 
     def shipwire_return_items
@@ -74,10 +69,6 @@ module SolidusShipwire
         response = order.find_on_shipwire(order.shipwire_id)
         response.ok? ? response.body.with_indifferent_access : nil
       end
-    end
-
-    def shipwire_instance
-      Shipwire::Returns.new
     end
 
     Spree::ReturnAuthorization.prepend self
