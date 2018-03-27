@@ -1,4 +1,6 @@
-describe Spree::ReturnAuthorization, type: :model do
+# Due to the future refactoring of returns these specs are pending until
+# returns logic is complete.
+xdescribe Spree::ReturnAuthorization, type: :model do
   let(:default_warehouse)    { ShipwireFactory::Warehouse.new.default }
   let(:shipwire_product)     { sw_product_factory.in_stock }
   let(:return_item)          { build(:return_item, inventory_unit: order.inventory_units.first) }
