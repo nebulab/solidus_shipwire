@@ -57,7 +57,7 @@ module Spree
         end
 
         def shipment_shipwire_json
-          @shipment_shipwire_json ||= shipment.to_shipwire
+          @shipment_shipwire_json ||= shipment.to_shipwire_json
         end
       end
     end
