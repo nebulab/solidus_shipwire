@@ -25,7 +25,7 @@ module SolidusShipwire
       end
 
       require 'solidus_shipwire/shipwire_objects/order'
-      require 'solidus_shipwire/shipwire_objects/return_authorization'
+      #require 'solidus_shipwire/shipwire_objects/return_authorization'
     end
 
     config.to_prepare &method(:activate).to_proc
