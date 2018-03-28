@@ -4,13 +4,13 @@ module SolidusShipwire::Response
   end
 
   def to_sku_id_hashmap
-    Hash[body['resource']['items'].map do |v|
-      [v['resource']['sku'], v['resource']['id']]
+    Hash[resource[:items].map do |v|
+      [v[:resource][:sku], v[:resource][:id]]
     end]
   end
 
   def next?
-    body['resource']['next'].present?
+    resource[:next].present?
   end
 
   private
