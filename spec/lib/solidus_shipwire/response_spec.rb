@@ -47,4 +47,21 @@ describe Shipwire::Response, type: :model do
       expect(subject).to eq expected_hash
     end
   end
+
+  # resource[:classification] == "virtualKit"
+  describe "#virtual_kit?" do
+    subject { response_instance.virtual_kit? }
+
+    context "when classification is virtualKit" do
+      let(:resource) { { classification: 'virtualKit' } }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "when classification isn't virtualKit" do
+      let(:resource) { { classification: 'not_a_virtualKit' } }
+
+      it { is_expected.to be_falsey }
+    end
+  end
 end

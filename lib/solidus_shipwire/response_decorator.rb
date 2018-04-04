@@ -14,6 +14,10 @@ module SolidusShipwire
       resource[:next].present?
     end
 
+    def virtual_kit?
+      resource[:classification] == "virtualKit"
+    end
+
     Shipwire::Response.prepend self
   end
 end
