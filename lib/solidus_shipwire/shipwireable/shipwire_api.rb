@@ -62,7 +62,10 @@ module SolidusShipwire
         end
 
         def find_on_shipwire
-          self.class.find_on_shipwire(shipwire_id)
+          response = self.class.find_on_shipwire(shipwire_id)
+
+          raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
+          response
         end
 
         def update_on_shipwire
@@ -71,22 +74,43 @@ module SolidusShipwire
           self.class.update_on_shipwire(shipwire_id, to_shipwire_json)
         end
 
+        def update_on_shipwire!
+          response = update_on_shipwire
+
+          raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
+          response
+        end
+
         def create_on_shipwire
           response = self.class.create_on_shipwire(to_shipwire_json)
+          if response.ok?
+            shipwire_id = response.resource[:items].first[:resource][:id]
+            update_shipwire_id(shipwire_id)
+          end
+          response
+        end
+
+        def create_on_shipwire!
+          response = create_on_shipwire
+
           raise SolidusShipwire::ResponseException.new(response), response.error_report unless response.ok?
-          shipwire_id = response.body['resource']['items'].first['resource']['id']
-          update_shipwire_id(shipwire_id)
-          self.class.find_on_shipwire(shipwire_id)
+          response
         end
 
         def find_or_create_on_shipwire
-          shipwire_response = self.class.find_on_shipwire(shipwire_id)
-
-          unless shipwire_response.ok?
-            shipwire_response = self.class.create_on_shipwire(to_shipwire_json)
+          if shipwire_id.present?
+            find_on_shipwire
+          else
+            create_on_shipwire
           end
+        end
 
-          shipwire_response
+        def find_or_create_on_shipwire!
+          if shipwire_id.present?
+            find_on_shipwire
+          else
+            create_on_shipwire!
+          end
         end
 
         def update_shipwire_id(shipwire_id)
