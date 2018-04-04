@@ -1,6 +1,6 @@
 # Fix for retrieve order from Shipwire gem
 module SolidusShipwire
-  module OrderDecorator
+  module OrdersDecorator
     def find(id, params = {})
       request(:get, "orders/#{id}", params: params)
     end
