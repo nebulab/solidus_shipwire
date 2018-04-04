@@ -11,6 +11,10 @@ class DummyClass
   extend SolidusShipwire::Shipwireable
 
   acts_as_shipwireable api_class: FakeShipwireApi
+
+  def shipwire_id; end
+
+  def shipwire_id=(param); end
 end
 
 describe SolidusShipwire::Shipwireable::ShipwireApi do
