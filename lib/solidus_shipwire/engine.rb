@@ -23,9 +23,6 @@ module SolidusShipwire
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
-
-      require 'solidus_shipwire/shipwire_objects/order'
-      require 'solidus_shipwire/shipwire_objects/return_authorization'
     end
 
     config.to_prepare &method(:activate).to_proc

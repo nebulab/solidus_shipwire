@@ -1,84 +1,46 @@
 module SolidusShipwire
-  module ReturnAuthorization
-    prepend SolidusShipwire::Proxy
-
+  module ReturnAuthorizationDecorator
+    # Return authorization on shipwire should be splitted by order on shipwire
+    # If a return authorization contains inventory units related to different
+    # order on shipwire, it should be splitter in more than one return
+    # authorization, one for each of them.
     def self.prepended(base)
-      base.after_validation :process_shipwire_return!, if: :create_on_shipwire?
-    end
+      base.acts_as_shipwireable api_class: Shipwire::Returns,
+                                serializer: SolidusShipwire::ReturnAuthorizationSerializer
 
-    def to_shipwire
-      {
-        originalOrder: {
-          id: order.shipwire_id
-        },
-        items:
-          shipwire_return_items.map { |s, q| { sku: s, quantity: q } },
-        options: {
-          generatePrepaidLabel: generate_prepaid_label,
-          emailCustomer: email_customer,
-          warehouseId: warehouse_id,
-          warehouseExternalId: warehouse_external_id,
-          warehouseRegion: warehouse_region
-        }
-      }
+      # At the moment the creation on shipwire has been removed, because the old
+      # logic doesn't consider that an return authorization can be splitter in
+      # more than one.
+      #
+      # base.after_validation :process_shipwire_return!, if: :create_on_shipwire?
     end
 
     private
 
-    def create_on_shipwire?
-      order.shipped? && shipwire_order.present?
-    end
+    # before create in inventory units are eligible for shipwire split them by
+    # shipment and create a ReturnAuthorization for every shipwire shipment.
+    # before_create do
+    #   inventory_units.eligible_for_shipwire.group_by(:shipment).each do |shipment, inventory_units|
+    #     Spree::ReturnAuthorization.create(...)
+    #   end
+    # rescue SolidusShipwire::ResponseException => e
+    #   shipwire_errors = Shipwire::ReturnError.build_from_response(e.response)
+    #   shipwire_errors.each { |error| errors.add(error.key, error.message) }
+    # end
 
-    def process_shipwire_return!
-      create_on_shipwire
-    rescue SolidusShipwire::ResponseException => e
-      shipwire_errors = Shipwire::ReturnError.build_from_response(e.response)
-      shipwire_errors.each { |error| errors.add(error.key, error.message) }
-    end
+    # def create_on_shipwire?
+    #   order.shipped? && shipwire_order.present?
+    # end
 
-    def to_shipwire_object(hash)
-      SolidusShipwire::ShipwireObjects::ReturnAuthorization.new(hash['id'], self, hash)
-    end
+    # def shipwire_order
+    #   return @shipwire_order if defined? @shipwire_order
+    #   @shipwire_order = begin
+    #     return nil if order.nil? || order.shipwire_id.nil?
 
-    def shipwire_return_items
-      return_items.each_with_object(Hash.new(0)) do |item, hash|
-        hash[item.inventory_unit.variant.sku] += 1
-      end
-    end
-
-    def generate_prepaid_label
-      0
-    end
-
-    def email_customer
-      0
-    end
-
-    def warehouse_id
-      shipwire_order[:resource][:options][:resource][:warehouseId]
-    end
-
-    def warehouse_external_id
-      nil
-    end
-
-    def warehouse_region
-      ''
-    end
-
-    def shipwire_order
-      return @shipwire_order if defined? @shipwire_order
-      @shipwire_order = begin
-        return nil if order.nil? || order.shipwire_id.nil?
-
-        response = order.find_on_shipwire(order.shipwire_id)
-        response.ok? ? response.body.with_indifferent_access : nil
-      end
-    end
-
-    def shipwire_instance
-      Shipwire::Returns.new
-    end
+    #     response = order.find_on_shipwire(order.shipwire_id)
+    #     response.ok? ? response.body.with_indifferent_access : nil
+    #   end
+    # end
 
     Spree::ReturnAuthorization.prepend self
   end

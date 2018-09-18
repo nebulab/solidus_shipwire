@@ -10,6 +10,7 @@ end
 
 require 'rspec/rails'
 require 'ffaker'
+require 'active_model_serializers'
 
 # Requires factories defined in spree_core
 require 'spree/testing_support/factories'
