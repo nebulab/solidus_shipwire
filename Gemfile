@@ -14,6 +14,8 @@ group :development, :test do
   gem 'i18n-tasks', '~> 0.9' if branch == 'master'
 end
 
+gem 'simplecov', require: false, group: :test
+
 gem 'mysql2'
 gem 'sqlite3'
 gem 'pg'
