@@ -1,9 +1,0 @@
-<!-- insert_bottom '#order_tab_summary > dl' -->
-<% if @order.complete? %>
-  <dt><%= Spree::Order.human_attribute_name(:shipwire_id) %></dt>
-  <% if @order.shipwire_id.nil? %>
-    <dd>not sync</td>
-  <% else %>
-    <dd><%= @order.shipwire_id %></td>
-  <% end %>
-<% end %>

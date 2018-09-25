@@ -1,6 +1,0 @@
-<!-- insert_bottom '[data-hook=admin_order_tabs]' -->
-<% if @order.complete? %>
-  <li class="tab <%= "active" if current == "Shipwire" %>" data-hook='admin_order_tabs_shipwire'>
-    <%= link_to_with_icon 'share', t('shipwire.name'), shipwire_admin_order_url(@order) %>
-  </li>
-<% end %>
