@@ -1,7 +1,0 @@
-<% if @error.nil? %>
-  $('#errors').hide()
-  $('#shipwire_data').html("<%= escape_javascript(render partial: 'spree/admin/orders/shipwire_data', shipwire_data: @shipwire_data) %>")
-<% else %>
-  $('#errors').show()
-  $('#errors').html("<%= escape_javascript(render partial: 'spree/admin/orders/shipwire_error', error: @error) %>")
-<% end %>

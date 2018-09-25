@@ -1,6 +1,9 @@
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 begin
   require File.expand_path('../dummy/config/environment', __FILE__)
 rescue LoadError

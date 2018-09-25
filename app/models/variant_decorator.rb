@@ -5,10 +5,6 @@ module SolidusShipwire
                                 serializer: SolidusShipwire::VariantSerializer
     end
 
-    def update_stocks_from_shipwire
-      Shipwire::Stock.new.list( sku: self.sku)
-    end
-
     Spree::Variant.prepend self
   end
 end
