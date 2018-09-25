@@ -1,5 +1,0 @@
-<!-- insert_before '[data-hook=admin_orders_index_row_actions]' -->
-<td>
-  <span class="state <%= order.shipwire_id.present? ? 'success' : 'error' %>">
-  <%= order.shipwire_id.present? ? t('shipwire.synced') : t('shipwire.not_synced') %>
-</td>
