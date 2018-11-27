@@ -59,6 +59,18 @@ module SolidusShipwire
           def create_on_shipwire(shipwire_json)
             shipwire_api.create(shipwire_json)
           end
+
+          def respond_to_missing?(method_name, include_private = false)
+            (method_name == :cancel_from_shipwire && shipwire_api.respond_to?(:cancel)) || super
+          end
+
+          def method_missing(method_name, *arguments, &block)
+            if method_name == :cancel_from_shipwire
+              shipwire_api.cancel(*arguments)
+            else
+              super
+            end
+          end
         end
 
         def find_on_shipwire
@@ -119,6 +131,21 @@ module SolidusShipwire
           else
             self.shipwire_id = shipwire_id
           end
+        end
+
+        def respond_to_missing?(method_name, include_private = false)
+          (method_name == :cancel_from_shipwire && self.class.shipwire_api.respond_to?(:cancel)) || super
+        end
+
+        def method_missing(method_name, *arguments, &block)
+          return super if method_name != :cancel_from_shipwire
+
+          return if shipwire_id.blank?
+
+          response = self.class.cancel_from_shipwire(shipwire_id)
+          update_attribute(:shipwire_id, nil) if response.ok?
+
+          response
         end
       end
     end
