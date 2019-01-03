@@ -143,7 +143,7 @@ module SolidusShipwire
           return if shipwire_id.blank?
 
           response = self.class.cancel_from_shipwire(shipwire_id)
-          update_attribute(:shipwire_id, nil) if response.ok?
+          update_attribute(:shipwire_id, nil)
 
           response
         end

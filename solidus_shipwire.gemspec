@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'solidus_support'
   s.add_runtime_dependency 'retriable'
 
-  s.add_development_dependency 'factory_bot', '~> 4.4'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails', '~> 3.0'
   s.add_development_dependency 'vcr', '~> 3.0'
