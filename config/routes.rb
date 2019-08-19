@@ -1,6 +1,6 @@
 Spree::Core::Engine.routes.draw do
   namespace :api, defaults: { format: 'json' } do
-    resources :shipments do
+    resources :shipments, only: [] do
       resources :rates, only: [:index], module: :shipwire
     end
   end
