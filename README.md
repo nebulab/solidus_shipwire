@@ -42,14 +42,14 @@ end
 Sync all variants to shipwire
 
 ```
-be rake solidus_shipwire:sync_variants
+bundle exec rake solidus_shipwire:sync_variants
 ```
 
 If you already have your variants in shipwire, you can create variants with same
 sku on solidus and run:
 
 ```
-be rake solidus_shipwire:link_shipwire_product
+bundle exec rake solidus_shipwire:link_shipwire_product
 ```
 
 Example
